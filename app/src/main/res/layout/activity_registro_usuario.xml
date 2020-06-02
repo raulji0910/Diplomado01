@@ -163,4 +163,14 @@
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="81dp" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="183dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Registrarse"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="634dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
