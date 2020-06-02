@@ -10,78 +10,28 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
         android:text="CoronaAlert"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="32dp" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="212dp"
-        android:layout_height="58dp"
-        android:autoSizeTextType="uniform"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Registrese aquí"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="58dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombres"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="160dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Numero de identificación"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="335dp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Correo Electrónico"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="390dp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ingrese su contraseña"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="449dp" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirme su contraseña"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="504dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="151dp" />
 
     <EditText
         android:id="@+id/editText15"
-        android:layout_width="201dp"
-        android:layout_height="47dp"
+        android:layout_width="157dp"
+        android:layout_height="49dp"
         android:ems="10"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="197dp"
-        tools:layout_editor_absoluteY="421dp" />
+        tools:layout_editor_absoluteY="434dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Apellidos"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="215dp" />
+    <EditText
+        android:id="@+id/editText13"
+        android:layout_width="161dp"
+        android:layout_height="46dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="391dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -89,16 +39,24 @@
         android:layout_height="wrap_content"
         android:text="Tipo de Identificación"
         tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="270dp" />
+        tools:layout_editor_absoluteY="285dp" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/editText12"
+        android:layout_width="165dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="325dp" />
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="142dp" />
+        android:text="Numero de identificación"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="350dp" />
 
     <EditText
         android:id="@+id/editText9"
@@ -107,51 +65,32 @@
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="197dp" />
+        tools:layout_editor_absoluteY="212dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo Electrónico"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="405dp" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="271dp"
-        tools:layout_editor_absoluteY="9dp"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="20dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
         android:id="@+id/editText10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="188dp"
+        android:layout_height="47dp"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <EditText
-        android:id="@+id/editText12"
-        android:layout_width="202dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="number"
-        tools:layout_editor_absoluteX="197dp"
-        tools:layout_editor_absoluteY="315dp" />
-
-    <EditText
-        android:id="@+id/editText13"
-        android:layout_width="201dp"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="197dp"
-        tools:layout_editor_absoluteY="378dp" />
-
-    <EditText
-        android:id="@+id/editText16"
-        android:layout_width="200dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="490dp" />
+        tools:layout_editor_absoluteY="268dp" />
 
     <RadioButton
         android:id="@+id/radioButton"
@@ -159,7 +98,69 @@
         android:layout_height="wrap_content"
         android:text="Acepto los términos y políticia de privacidad"
         android:textColor="#F85F6A"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="554dp" />
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="587dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirme su contraseña"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="519dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrese su contraseña"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="464dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellidos"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <EditText
+        android:id="@+id/editText16"
+        android:layout_width="163dp"
+        android:layout_height="46dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="500dp" />
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="157dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombres"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="175dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="145dp"
+        android:layout_height="50dp"
+        android:autoSizeTextType="uniform"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Registrese aquí"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="81dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
