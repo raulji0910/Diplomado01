@@ -2,5 +2,5 @@
     <string name="app_name">CoronaAlert</string>
     <string name="title_activity_informe_geolocalizacion">Informe GeoPosición</string>
     <string name="registro_diario_name">Registro Diario</string>
-
+    <string name="sub_title_one">Ingresa tu estado de salud el día de hoy:</string>
 </resources>

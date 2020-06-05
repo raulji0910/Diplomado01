@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Registro_Diario_Covid_19">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +27,7 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="29dp"
-        android:text="Ingresa tu estado de salud el día de hoy:"
+        android:text="@string/sub_title_one"
         android:textAlignment="center"
         android:textColor="#1A237E"
         android:textSize="18sp" />
@@ -44,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
-                android:text="Sientes algunos de los síntomas asociados con el COVID-19 (Fiebre, dolor de cabeza, malestar general,síntomas pulmonares?" />
+                android:text="¿Sientes algunos de los síntomas asociados con el COVID-19 (Fiebre, dolor de cabeza, malestar general,síntomas pulmonares)?" />
 
             <Switch
                 android:id="@+id/SW1"
@@ -143,5 +150,6 @@
         android:keyboardNavigationCluster="true"
         android:text="Registrar Información"
         android:textColor="#FFFF" />
-
+    </LinearLayout>
+</ScrollView>
 </LinearLayout>
