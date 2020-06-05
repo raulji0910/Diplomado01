@@ -16,4 +16,6 @@ class MainActivity : AppCompatActivity() {
         val miIntent = Intent(this, InformeGeolocalizacionActivity::class.java);
         startActivity(miIntent);
     }
+
+
 }
