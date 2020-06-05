@@ -15,7 +15,16 @@ class MainActivity : AppCompatActivity() {
     fun onClick(view: View){
         val miIntent = Intent(this, InformeGeolocalizacionActivity::class.java);
         startActivity(miIntent);
+
+    }
+
+    fun onClickRegistro_Diario(view: View){
+        val miIntent = Intent(this, Registro_Diario_Covid_19::class.java);
+        startActivity(miIntent);
     }
 
 
 }
+
+
+
