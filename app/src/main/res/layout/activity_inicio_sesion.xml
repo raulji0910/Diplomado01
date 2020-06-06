@@ -12,7 +12,83 @@
         android:layout_height="wrap_content"
         android:text="Button"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="233dp"
-        tools:layout_editor_absoluteY="444dp"
-        tools:text="ingresar" />
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="461dp"
+        tools:text="@string/Btn_Inicio_Sesion" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="531dp"
+        tools:text="Registrarme"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="32dp"
+        tools:text="Bienvenidos a CoronaAlert"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="102dp"
+        android:layout_height="89dp"
+        app:srcCompat="@drawable/icono"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="78dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="189dp"
+        tools:text="Inicio de Sesión"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="311dp"
+        tools:ignore="MissingConstraints">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="213dp"
+        android:layout_height="56dp"
+        android:hint="Usuario"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="263dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="222dp"
+        android:layout_height="64dp"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="357dp"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
