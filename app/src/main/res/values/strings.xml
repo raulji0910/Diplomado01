@@ -2,4 +2,5 @@
     <string name="app_name">CoronaAlert</string>
     <string name="title_activity_informe_geolocalizacion">Informe GeoPosición</string>
     <string name="Btn_Inicio_Sesion">Ingresar</string>
+    <string name="Btn2_Inicio_Sesion">Registrarme</string>
 </resources>
