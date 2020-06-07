@@ -30,7 +30,9 @@
 
         <activity
             android:name=".InformeGeolocalizacionActivity"
-            android:label="@string/title_activity_informe_geolocalizacion" />
+            android:icon="@drawable/icon_corona"
+            android:label="@string/app_name" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
