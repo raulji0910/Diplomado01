@@ -12,58 +12,76 @@
         android:layout_height="64dp"
         android:background="#80aaff"
         android:backgroundTint="#80aaff"
-        android:text="Button"
+        android:text="INGRESAR"
         android:textColor="#F8F6F6"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.709"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="461dp"
-        tools:text="@string/Btn_Inicio_Sesion" />
+        tools:text="@string/Btn_Inicio_Sesion"/>
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="259dp"
-        android:layout_height="58dp"
+        android:layout_width="255dp"
+        android:layout_height="64dp"
         android:background="#FF9298"
         android:backgroundTint="#ff9298"
-        android:text="Button"
+        android:text="REGISTRARME"
         android:textColor="#FAF8F8"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="560dp"
         tools:text="@string/Btn2_Inicio_Sesion" />
+
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginTop="16dp"
+        android:text="Bienvenidos a CoronaAlert"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="32dp"
-        tools:text="Bienvenidos a CoronaAlert"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:text="Bienvenidos a CoronaAlert" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="102dp"
         android:layout_height="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119"
         app:srcCompat="@drawable/icono"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="78dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Inicio de Sesión"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="189dp"
-        tools:text="Inicio de Sesión"
-        tools:ignore="MissingConstraints" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.268"
+        tools:ignore="MissingConstraints"
+        tools:text="Inicio de Sesión" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="409dp"
@@ -75,46 +93,64 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditText"
         android:layout_width="237dp"
         android:layout_height="57dp"
         android:hint="Usuario"
         android:textAlignment="center"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="231dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.336"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="¿Olvidaste el usuario?"
         android:textColor="#2D8EDC"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="292dp"
-        tools:text="¿Olvidaste el usuario?"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436"
+        tools:ignore="MissingConstraints"
+        tools:text="¿Olvidaste el usuario?" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="¿Olvidaste la contraseña?"
         android:textColor="#2D8EDC"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="398dp"
-        tools:text="¿Olvidaste la contraseña?"
-        tools:ignore="MissingConstraints" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.578"
+        tools:ignore="MissingConstraints"
+        tools:text="¿Olvidaste la contraseña?" />
+
+
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditText2"
         android:layout_width="236dp"
         android:layout_height="51dp"
         android:hint="Contraseña"
         android:textAlignment="center"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="340dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
