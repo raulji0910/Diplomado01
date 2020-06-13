@@ -15,6 +15,51 @@
       },
       "oauth_client": [
         {
+          "client_id": "609874477416-hlhrr1493f43mbann5dm78o3496jrau6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.diplomado.coronaalert",
+            "certificate_hash": "69620f1f121b7da6caf45c072c9658dd64099c3f"
+          }
+        },
+        {
+          "client_id": "609874477416-hov89s216mrt5tcoqsm85vm00q4ofd9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnlrLo24cqIb4xAkzdx2bMHEeZAASddVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609874477416-hov89s216mrt5tcoqsm85vm00q4ofd9v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609874477416:android:6137718539d89be96c56dd",
+        "android_client_info": {
+          "package_name": "com.example.coronaalert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609874477416-rcfpdp7s8niu0jjt1oaopt8qnh3nuq2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.coronaalert",
+            "certificate_hash": "a47054bbd74c56a3b945d203022581f5825ed9df"
+          }
+        },
+        {
           "client_id": "609874477416-hov89s216mrt5tcoqsm85vm00q4ofd9v.apps.googleusercontent.com",
           "client_type": 3
         }
