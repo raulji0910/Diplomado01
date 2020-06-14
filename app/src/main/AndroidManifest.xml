@@ -47,6 +47,10 @@
 
         </activity>
 
+        <activity android:name=".Inicio_sesion">
+
+        </activity>
+
         <activity android:name=".Registro_Diario_Covid_19">
 
         </activity>

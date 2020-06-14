@@ -62,8 +62,9 @@ class RegistroUsuario : AppCompatActivity() {
                         val user:FirebaseUser?=auth.currentUser
                         verifyEmail(user)
 
-                        val userBD= user?.uid?.let { dbReference.child(it) }
-                        //val userBD= dbReference.child("user")
+                        //val userBD= user?.uid?.let { dbReference.child(it) }
+
+                        val userBD= dbReference.child(user?.uid.toString())
                      //val userBD= user?.uid?.let { dbReference.child(it) }
 
                         userBD?.child("Name")?.setValue(name)
