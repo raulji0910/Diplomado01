@@ -56,7 +56,7 @@ class Inicio_sesion : AppCompatActivity() {
                         action()
                     }else{
                         progressBar.visibility=View.INVISIBLE
-                        Toast.makeText(this,task.exception?.message.toString(), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this,"Error en el usuario y/o contraseña",Toast.LENGTH_LONG).show()
                     }
                 }
         }

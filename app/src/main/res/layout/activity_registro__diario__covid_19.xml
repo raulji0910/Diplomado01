@@ -5,6 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:keyboardNavigationCluster="true"
     android:orientation="vertical"
     tools:context=".Registro_Diario_Covid_19">
 
@@ -90,28 +91,66 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ]]>
 
     <CalendarView
 
         android:id="@+id/calendarView2"
-        style="@android:style/Widget.Material.Light.CalendarView"
-        android:layout_width="243dp"
-        android:layout_height="188dp"
+        style="@android:style/Widget.Holo.Light.CalendarView"
+        android:layout_width="218dp"
+        android:layout_height="231dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="90dp"
         android:backgroundTint="#3F51B5"
-        android:scrollbarStyle="outsideInset"
-        android:visibility="visible"
+        android:contextClickable="true"
+        android:defaultFocusHighlightEnabled="true"
+        android:textAlignment="inherit"
+        android:visibility="gone"
+        app:layout_constrainedHeight="false"
+        app:layout_constrainedWidth="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintVertical_bias="0.859"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="255dp"
-        android:layout_height="64dp"
+        android:layout_width="235dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="28dp"
         android:background="#80aaff"
         android:backgroundTint="#80aaff"
