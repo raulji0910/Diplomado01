@@ -43,7 +43,13 @@
 
         </activity>
 
-        <activity android:name=".Inicio_sesion">
+        <activity android:name=".Inicio_sesion"
+            android:label="CoronaAlert"
+
+            android:roundIcon="@drawable/iconop"
+            android:icon="@drawable/iconop"
+
+            >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

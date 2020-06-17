@@ -60,43 +60,41 @@
         app:layout_constraintVertical_bias="0.067" />
 
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Bienvenidos a CoronaAlert"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:text="Bienvenidos a CoronaAlert" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="102dp"
-        android:layout_height="89dp"
+        android:layout_width="76dp"
+        android:layout_height="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119"
-        app:srcCompat="@drawable/icono"
+        app:layout_constraintVertical_bias="0.095"
+        app:srcCompat="@drawable/iconop"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+
+
+        android:fontFamily="@font/quicksand"
         android:text="Inicio de Sesión"
-        android:textSize="18sp"
+
+        android:textAlignment="center"
+
+        android:textSize="30dp"
         android:textStyle="bold"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268"
+        app:layout_constraintVertical_bias="0.087"
         tools:ignore="MissingConstraints"
         tools:text="Inicio de Sesión" />
 
@@ -119,17 +117,19 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436"
+        app:layout_constraintVertical_bias="0.358"
         tools:ignore="MissingConstraints"
         tools:text="¿Olvidaste el usuario?" />
 
+
     <TextView
         android:id="@+id/textOlvidoPass"
-        android:onClick="forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="forgotPassword"
         android:text="¿Olvidaste la contraseña?"
         android:textColor="#2D8EDC"
         android:textStyle="bold"
@@ -137,10 +137,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578"
+        app:layout_constraintVertical_bias="0.526"
         tools:ignore="MissingConstraints"
         tools:text="¿Olvidaste la contraseña?" />
-
 
     <EditText
         android:id="@+id/editEmail"
@@ -151,10 +150,10 @@
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348" />
+        app:layout_constraintVertical_bias="0.276" />
 
     <EditText
         android:id="@+id/editPassword"
@@ -165,8 +164,10 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

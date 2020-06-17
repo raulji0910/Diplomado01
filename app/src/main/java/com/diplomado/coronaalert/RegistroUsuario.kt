@@ -5,18 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.AbsListView
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
+import com.diplomado.coronaalert.`interface`.IFirebaseLoadDone
+import com.diplomado.coronaalert.model.TipoIdentificacion
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import java.lang.ref.PhantomReference
 
-class RegistroUsuario : AppCompatActivity() {
+class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
 
     private lateinit var txtName:EditText
     private lateinit var txtLastName:EditText
@@ -24,23 +22,48 @@ class RegistroUsuario : AppCompatActivity() {
     private lateinit var txtPassword:EditText
     private lateinit var progressBar: ProgressBar
     private lateinit var dbReference: DatabaseReference
+    private lateinit var dbReferenceTipoIden: DatabaseReference
     private lateinit var database:FirebaseDatabase
     private lateinit var auth:FirebaseAuth
+
+    //Spinner - Inicio
+    private lateinit var mSpinner: Spinner
+    private lateinit var iFirebaseLoadDone: IFirebaseLoadDone
+    //Spinner - Fin
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_usuario)
-        txtName=findViewById(R.id.editTextNombre)
-        txtLastName=findViewById(R.id.editApellido)
+        txtName=findViewById(R.id.editNombres)
+        txtLastName=findViewById(R.id.editApellidos)
         txtEmail=findViewById(R.id.editCorreo)
-        txtPassword=findViewById(R.id.editPassword)
-
+        txtPassword=findViewById(R.id.editContrasena)
         progressBar= findViewById(R.id.progressBar)
         database= FirebaseDatabase.getInstance()
         auth=FirebaseAuth.getInstance()
-
         dbReference=database.reference.child("User")
+
+        //Spinner - Inicio
+        dbReferenceTipoIden= database.reference.child("TipoIdentificacion")
+        iFirebaseLoadDone = this
+        mSpinner=findViewById(R.id.editTipoIdentificacion)
+        //Spinner - Inicio
+
+        //Spinner - Inicio
+        dbReferenceTipoIden.addValueEventListener(object : ValueEventListener{
+            var tipoIdenList:MutableList<TipoIdentificacion> = ArrayList<TipoIdentificacion>()
+            override fun onCancelled(p0: DatabaseError) {
+                iFirebaseLoadDone.onFirebaseLoadFailed(p0.message)
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                for(tipoIdenSnapShot in p0.children)
+                    tipoIdenList.add(tipoIdenSnapShot.getValue<TipoIdentificacion>(TipoIdentificacion::class.java)!!)
+                iFirebaseLoadDone.onFirebaseLoadSucess(tipoIdenList)
+            }
+        })
+        //Spinner - Fin
     }
 
 
@@ -48,10 +71,10 @@ class RegistroUsuario : AppCompatActivity() {
         createNewAccount()
     }
     private fun createNewAccount(){
-        val name:String=editTextNombre.text.toString()
-        val lastName:String=editApellido.text.toString()
+        val name:String=editNombres.text.toString()
+        val lastName:String=editApellidos.text.toString()
         val email:String=editCorreo.text.toString()
-        val password:String=editPassword.text.toString()
+        val password:String=editContrasena.text.toString()
 
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
             progressBar.visibility=View.VISIBLE
@@ -92,6 +115,26 @@ class RegistroUsuario : AppCompatActivity() {
                 }
             }
     }
+
+   //Spinner - Inicio
+    override fun onFirebaseLoadSucess(tipoIdentificacionList: List<TipoIdentificacion>) {
+        val tipo_iden_descripcion = getTipoIdentificacionDescripcionList(tipoIdentificacionList)
+        val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,tipo_iden_descripcion)
+        mSpinner.adapter = adapter
+    }
+
+    private fun getTipoIdentificacionDescripcionList(tipoIdentificacionList: List<TipoIdentificacion>): List<String> {
+
+        val result = ArrayList<String>()
+        for(tipoIdentificacion in tipoIdentificacionList )
+            result.add(tipoIdentificacion.tipoDescripcion!!)
+        return result
+    }
+
+    override fun onFirebaseLoadFailed(message: String) {
+
+    }
+    //Spinner - Fin
 }
 
 
