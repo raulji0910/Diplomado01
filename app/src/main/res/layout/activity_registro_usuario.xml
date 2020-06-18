@@ -48,29 +48,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textTipoIdentificacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Tipo de Identificación" />
 
 
             <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                 android:id="@+id/editTipoIdentificacion"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginRight="30dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -78,22 +78,21 @@
                 android:id="@+id/numeroIdentificacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Numero de identificación" />
 
             <EditText
                 android:id="@+id/editNumeroIdentificacion"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:ems="10"
+                android:layout_marginRight="30dp"
                 android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -101,21 +100,21 @@
                 android:id="@+id/textNombres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Nombres" />
 
 
             <EditText
                 android:id="@+id/editNombres"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -123,21 +122,21 @@
                 android:id="@+id/textApelidos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Apellidos" />
 
 
             <EditText
                 android:id="@+id/editApellidos"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -145,21 +144,21 @@
                 android:id="@+id/textCorreoElectronico"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Correo Electrónico" />
 
 
             <EditText
                 android:id="@+id/editCorreo"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -167,21 +166,21 @@
                 android:id="@+id/textFechaNacimiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Fecha de nacimiento" />
 
 
             <EditText
                 android:id="@+id/editFechaNacimiento"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -189,21 +188,21 @@
                 android:id="@+id/textGenero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Género" />
 
 
             <EditText
                 android:id="@+id/editGenero"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -211,21 +210,21 @@
                 android:id="@+id/textPersonasVive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="# Personas con que vive" />
 
 
             <EditText
                 android:id="@+id/editPersonasVive"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -233,21 +232,21 @@
                 android:id="@+id/textTipoSangre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Tipo de sangre" />
 
 
             <EditText
                 android:id="@+id/editTipoSangre"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -255,21 +254,21 @@
                 android:id="@+id/textContrasena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Ingrese su contraseña" />
 
 
             <EditText
                 android:id="@+id/editContrasena"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -277,26 +276,28 @@
                 android:id="@+id/textConfirmarContrasena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:text="Confirme su contraseña" />
 
 
             <EditText
                 android:id="@+id/editConfirmeContrasena"
-                android:layout_width="167dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
 
 
         <RadioButton
             android:id="@+id/radioButton1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:text="Acepto los términos y políticia de privacidad"
+            android:textAlignment="viewStart"
             android:textColor="#F85F6A"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
