@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_inicio_sesion.*
@@ -28,6 +29,8 @@ class Inicio_sesion : AppCompatActivity() {
         progressBar= findViewById(R.id.progressBar2)
         auth=FirebaseAuth.getInstance()
 
+        //getSupportActionBar()?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        //getSupportActionBar()?.setCustomView(R.layout.abs_layout)
 
     }
 
