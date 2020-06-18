@@ -22,6 +22,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
     private lateinit var txtPassword:EditText
     private lateinit var progressBar: ProgressBar
     private lateinit var dbReference: DatabaseReference
+
     private lateinit var dbReferenceTipoIden: DatabaseReference
     private lateinit var database:FirebaseDatabase
     private lateinit var auth:FirebaseAuth
@@ -40,7 +41,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
         txtEmail=findViewById(R.id.editCorreo)
         txtPassword=findViewById(R.id.editContrasena)
         progressBar= findViewById(R.id.progressBar)
-        database= FirebaseDatabase.getInstance()
+        database= FirebaseDatabase.getInstance() //Reconoce la instancia de la base de datos
         auth=FirebaseAuth.getInstance()
         dbReference=database.reference.child("User")
 
