@@ -45,9 +45,10 @@
 
         <activity android:name=".Inicio_sesion"
             android:label="CoronaAlert"
-
+            android:theme="@style/AppTheme1"
             android:roundIcon="@drawable/iconop"
             android:icon="@drawable/iconop"
+
 
             >
 
