@@ -57,7 +57,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Tipo de Identificación" />
+                android:text="Tipo de Identificación:"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
             <com.toptoche.searchablespinnerlibrary.SearchableSpinner
@@ -79,7 +81,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Numero de identificación" />
+                android:text="Numero de identificación:"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editNumeroIdentificacion"
@@ -101,7 +105,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Nombres" />
+                android:text="Nombres:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -123,7 +128,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Apellidos" />
+                android:text="Apellidos:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -145,7 +151,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Correo Electrónico" />
+                android:text="Correo Electrónico:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -167,7 +174,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Fecha de nacimiento" />
+                android:text="Fecha de nacimiento:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -189,7 +197,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Género" />
+                android:text="Género:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -211,7 +220,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="# Personas con que vive" />
+                android:text="# Personas con que vive:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -233,7 +243,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Tipo de sangre" />
+                android:text="Tipo de sangre:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -255,7 +266,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Ingrese su contraseña" />
+                android:text="Ingrese su contraseña:"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -277,7 +289,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Confirme su contraseña" />
+                android:text="Confirme su contraseña:"
+                android:textStyle="bold" />
 
 
             <EditText

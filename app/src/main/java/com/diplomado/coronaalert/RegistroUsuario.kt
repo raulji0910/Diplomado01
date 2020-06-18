@@ -119,7 +119,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
    //Spinner - Inicio
     override fun onFirebaseLoadSucess(tipoIdentificacionList: List<TipoIdentificacion>) {
         val tipo_iden_descripcion = getTipoIdentificacionDescripcionList(tipoIdentificacionList)
-        val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,tipo_iden_descripcion)
+        val adapter = ArrayAdapter<String>(this,R.layout.my_text_view,tipo_iden_descripcion)
         mSpinner.adapter = adapter
     }
 
