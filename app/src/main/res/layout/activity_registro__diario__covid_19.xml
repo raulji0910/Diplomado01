@@ -36,25 +36,12 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.096" /><![CDATA[
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Seleccione fecha de diagnóstico"
-        android:textAlignment="center"
-        android:textColor="#1A237E"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454" /><![CDATA[
+
 
 
 
@@ -126,29 +113,48 @@
 
 
 
+
+
+
+
     ]]>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione fecha de diagnóstico"
+        android:textAlignment="center"
+        android:textColor="#1A237E"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379" />
 
     <CalendarView
 
         android:id="@+id/calendarView2"
-        style="@android:style/Widget.Holo.Light.CalendarView"
-        android:layout_width="218dp"
-        android:layout_height="231dp"
+        style="@android:style/Widget.DeviceDefault.CalendarView"
+        android:layout_width="252dp"
+        android:layout_height="289dp"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="90dp"
         android:backgroundTint="#3F51B5"
         android:contextClickable="true"
         android:defaultFocusHighlightEnabled="true"
         android:textAlignment="inherit"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constrainedHeight="false"
         app:layout_constrainedWidth="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.864"
+        app:layout_constraintVertical_bias="0.84"
         tools:visibility="visible" />
 
     <Button
@@ -156,8 +162,8 @@
         android:layout_width="235dp"
         android:layout_height="41dp"
         android:layout_marginBottom="28dp"
-        android:background="#80aaff"
-        android:backgroundTint="#80aaff"
+        android:background="@drawable/bordes_redondos"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:keyboardNavigationCluster="true"
         android:text="Registrar Información"
         android:textColor="#FFFF"
@@ -172,13 +178,13 @@
         android:id="@+id/textView7"
         android:layout_width="333dp"
         android:layout_height="58dp"
-        android:text="¿Usted siente algunos de los síntomas asociados con el COVID-19 (Fiebre, dolor de cabeza, malestar general,síntomas pulmonares)?"
-        android:textAlignment="textStart"
+        android:text="¿Usted posee síntomas asociados con COVID-19 (Fiebre, dolor de cabeza, malestar general,síntomas pulmonares)?"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <Switch
         android:id="@+id/SW2"
@@ -192,7 +198,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <TextView
         android:id="@+id/textView8"
@@ -202,10 +208,10 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.283" />
 
     <Switch
         android:id="@+id/SW1"
@@ -219,7 +225,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.329" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
