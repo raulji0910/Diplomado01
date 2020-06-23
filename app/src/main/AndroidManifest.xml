@@ -15,13 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegistroUsuario">
-
-
-
-        </activity>
-
-
+        <activity android:name=".RecuperarContrasenaActivity"
+            android:theme="@style/AppTheme1">></activity>
+        <activity android:name=".RegistroUsuario"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,31 +34,22 @@
             android:name=".InformeGeolocalizacionActivity"
             android:icon="@drawable/icon_corona"
             android:label="@string/app_name" />
-
-        <activity android:name=".MainActivity">
-
-        </activity>
-
-        <activity android:name=".Inicio_sesion"
-            android:label="CoronaAlert"
-            android:theme="@style/AppTheme1"
-            android:roundIcon="@drawable/iconop"
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme1"></activity>
+        <activity
+            android:name=".Inicio_sesion"
             android:icon="@drawable/iconop"
-
-
-            >
-
+            android:label="CoronaAlert"
+            android:roundIcon="@drawable/iconop"
+            android:theme="@style/AppTheme1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".Registro_Diario_Covid_19">
-
-        </activity>
+        <activity android:name=".Registro_Diario_Covid_19"
+            android:theme="@style/AppTheme1"></activity>
     </application>
 
 </manifest>

@@ -35,7 +35,7 @@ class Inicio_sesion : AppCompatActivity() {
     }
 
     fun forgotPassword(view: View){
-
+        startActivity(Intent(this,RecuperarContrasenaActivity::class.java))
     }
     fun register(view:View){
         startActivity(Intent(this,RegistroUsuario::class.java))
