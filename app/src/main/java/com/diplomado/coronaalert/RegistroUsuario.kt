@@ -7,6 +7,8 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.*
 import com.diplomado.coronaalert.`interface`.IFirebaseLoadDone
+import com.diplomado.coronaalert.`interface`.IFirebaseLoadDoneGenero
+import com.diplomado.coronaalert.model.Genero
 import com.diplomado.coronaalert.model.TipoIdentificacion
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -14,7 +16,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import java.lang.ref.PhantomReference
 
-class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
+class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero {
 
     private lateinit var txtName:EditText
     private lateinit var txtLastName:EditText
@@ -22,13 +24,17 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
     private lateinit var txtPassword:EditText
     private lateinit var progressBar: ProgressBar
     private lateinit var dbReference: DatabaseReference
+
     private lateinit var dbReferenceTipoIden: DatabaseReference
+    private lateinit var dbReferenceGenero: DatabaseReference
     private lateinit var database:FirebaseDatabase
     private lateinit var auth:FirebaseAuth
 
     //Spinner - Inicio
     private lateinit var mSpinner: Spinner
+    private lateinit var mSpinner2: Spinner
     private lateinit var iFirebaseLoadDone: IFirebaseLoadDone
+    private lateinit var iFirebaseLoadDoneGenero: IFirebaseLoadDoneGenero
     //Spinner - Fin
 
 
@@ -40,7 +46,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
         txtEmail=findViewById(R.id.editCorreo)
         txtPassword=findViewById(R.id.editContrasena)
         progressBar= findViewById(R.id.progressBar)
-        database= FirebaseDatabase.getInstance()
+        database= FirebaseDatabase.getInstance() //Reconoce la instancia de la base de datos
         auth=FirebaseAuth.getInstance()
         dbReference=database.reference.child("User")
 
@@ -48,7 +54,11 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
         dbReferenceTipoIden= database.reference.child("TipoIdentificacion")
         iFirebaseLoadDone = this
         mSpinner=findViewById(R.id.editTipoIdentificacion)
-        //Spinner - Inicio
+        mSpinner2=findViewById(R.id.editGenero)
+
+
+
+
 
         //Spinner - Inicio
         dbReferenceTipoIden.addValueEventListener(object : ValueEventListener{
@@ -64,6 +74,24 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
             }
         })
         //Spinner - Fin
+        //Spinner - Inicio
+        dbReferenceGenero= database.reference.child("Genero")
+        iFirebaseLoadDoneGenero = this
+
+        dbReferenceGenero.addValueEventListener(object: ValueEventListener{
+            var tipogeneroList:MutableList<Genero> = ArrayList<Genero>()
+            override fun onCancelled(p0: DatabaseError) {
+                iFirebaseLoadDoneGenero.onFirebaseLoadFailed(p0.message)
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                for(GeneroSnapShot in p0.children)
+                    tipogeneroList.add(GeneroSnapShot.getValue<Genero>(Genero::class.java)!!)
+                iFirebaseLoadDoneGenero.onFirebaseLoadSucess(tipogeneroList)
+            }
+
+        })
+
     }
 
 
@@ -129,6 +157,10 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
         for(tipoIdentificacion in tipoIdentificacionList )
             result.add(tipoIdentificacion.tipoDescripcion!!)
         return result
+    }
+
+    override fun onFirebaseLoadSucess(tipogeneroList: List<Genero>) {
+
     }
 
     override fun onFirebaseLoadFailed(message: String) {
