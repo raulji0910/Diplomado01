@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Panel_noti_covid">
 
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="332dp" />
-
     <Button
         android:id="@+id/button7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Panel de noticias" />
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
