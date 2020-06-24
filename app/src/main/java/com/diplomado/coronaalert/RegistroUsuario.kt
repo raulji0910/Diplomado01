@@ -8,15 +8,18 @@ import android.view.View
 import android.widget.*
 import com.diplomado.coronaalert.`interface`.IFirebaseLoadDone
 import com.diplomado.coronaalert.`interface`.IFirebaseLoadDoneGenero
+import com.diplomado.coronaalert.`interface`.IFirebaseLoadDoneTipoSangre
 import com.diplomado.coronaalert.model.Genero
 import com.diplomado.coronaalert.model.TipoIdentificacion
+import com.diplomado.coronaalert.model.TipoSangre
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import java.lang.ref.PhantomReference
 
-class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero {
+class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero,
+    IFirebaseLoadDoneTipoSangre {
 
     private lateinit var txtName:EditText
     private lateinit var txtLastName:EditText
@@ -27,14 +30,18 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
 
     private lateinit var dbReferenceTipoIden: DatabaseReference
     private lateinit var dbReferenceGenero: DatabaseReference
+    private lateinit var dbReferenceTipoSangre: DatabaseReference
     private lateinit var database:FirebaseDatabase
     private lateinit var auth:FirebaseAuth
 
     //Spinner - Inicio
     private lateinit var mSpinner: Spinner
     private lateinit var mSpinner2: Spinner
+    private lateinit var mSpinner3: Spinner
     private lateinit var iFirebaseLoadDone: IFirebaseLoadDone
     private lateinit var iFirebaseLoadDoneGenero: IFirebaseLoadDoneGenero
+    private lateinit var iFirebaseLoadDoneTipoSangre: IFirebaseLoadDoneTipoSangre
+
     //Spinner - Fin
 
 
@@ -55,6 +62,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         iFirebaseLoadDone = this
         mSpinner=findViewById(R.id.editTipoIdentificacion)
         mSpinner2=findViewById(R.id.editGenero)
+        mSpinner3=findViewById(R.id.editTipoSangre)
 
 
 
@@ -78,19 +86,38 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         dbReferenceGenero= database.reference.child("Genero")
         iFirebaseLoadDoneGenero = this
 
+
         dbReferenceGenero.addValueEventListener(object: ValueEventListener{
             var tipogeneroList:MutableList<Genero> = ArrayList<Genero>()
             override fun onCancelled(p0: DatabaseError) {
-                iFirebaseLoadDoneGenero.onFirebaseLoadFailed(p0.message)
+                iFirebaseLoadDoneGenero.onFirebaseLoadFailedGenero(p0.message)
             }
 
             override fun onDataChange(p0: DataSnapshot) {
                 for(GeneroSnapShot in p0.children)
                     tipogeneroList.add(GeneroSnapShot.getValue<Genero>(Genero::class.java)!!)
-                iFirebaseLoadDoneGenero.onFirebaseLoadSucess(tipogeneroList)
+                iFirebaseLoadDoneGenero.onFirebaseLoadSucessGenero(tipogeneroList)
             }
 
         })
+        dbReferenceTipoSangre= database.reference.child("TipoSangre")
+        iFirebaseLoadDoneTipoSangre = this
+
+        dbReferenceTipoSangre.addValueEventListener(object: ValueEventListener{
+            var tipoSangreList:MutableList<TipoSangre> = ArrayList<TipoSangre>()
+            override fun onCancelled(p0: DatabaseError) {
+                iFirebaseLoadDoneTipoSangre.onFirebaseLoadFailedTipoSangre(p0.message)
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                for(TipoSangreSnapShot in p0.children)
+                    tipoSangreList.add(TipoSangreSnapShot.getValue<TipoSangre>(TipoSangre::class.java)!!)
+                iFirebaseLoadDoneTipoSangre.onFirebaseLoadSucessTipoSangre(tipoSangreList)
+            }
+
+        })
+
 
     }
 
@@ -159,12 +186,47 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         return result
     }
 
-    override fun onFirebaseLoadSucess(tipogeneroList: List<Genero>) {
 
-    }
 
     override fun onFirebaseLoadFailed(message: String) {
 
+    }
+
+    override fun onFirebaseLoadSucessGenero(tipogeneroList: List<Genero>) {
+        val tipo_genero_descripcion = getGeneroList(tipogeneroList)
+        val adapterGenero = ArrayAdapter<String>(this ,android.R.layout.simple_list_item_1,tipo_genero_descripcion)
+        mSpinner2.adapter = adapterGenero
+    }
+
+    private fun getGeneroList(tipogeneroList: List<Genero>): List<String> {
+        val result2 = ArrayList<String>()
+        for (Genero in tipogeneroList)
+            result2.add(Genero.generoDescripcion!!)
+        return result2
+
+    }
+
+    override fun onFirebaseLoadFailedGenero(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFirebaseLoadSucessTipoSangre(tipoSangreList: List<TipoSangre>) {
+        val tipo_sangre_descripcion = getTipoSangreList(tipoSangreList)
+        val adapterTipoSangre = ArrayAdapter<String>(this ,android.R.layout.simple_list_item_1,tipo_sangre_descripcion)
+        mSpinner3.adapter = adapterTipoSangre
+
+    }
+
+    private fun getTipoSangreList(tipoSangreList: List<TipoSangre>): List<String> {
+        val result3 = ArrayList<String>()
+        for (TipoSangre in tipoSangreList)
+            result3.add(TipoSangre.tipoSangreDescripcion!!)
+        return result3
+
+    }
+
+    override fun onFirebaseLoadFailedTipoSangre(message: String) {
+        TODO("Not yet implemented")
     }
     //Spinner - Fin
 }
