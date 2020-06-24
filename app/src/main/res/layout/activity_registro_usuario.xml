@@ -249,13 +249,15 @@
                 android:text="Tipo de sangre:"
                 android:textStyle="bold" />
 
-
-            <EditText
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                 android:id="@+id/editTipoSangre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:layout_weight="1" />
+
+
         </LinearLayout>
 
         <LinearLayout
