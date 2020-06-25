@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_registro__diario__covid_19.*
 import java.util.*
 
 class Registro_Diario_Covid_19 : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
     private lateinit var txtNombre: TextView
@@ -68,7 +69,6 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
         etPlannedDate.setText(""+mDay+"/"+mMonth+"/"+mYear)}, year,month,day)
             dpd.show()
         }}
-
 
 
 

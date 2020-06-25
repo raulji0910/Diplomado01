@@ -65,7 +65,7 @@
 
         android:fontFamily="@font/quicksand"
 
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
 
         android:textSize="18sp"
@@ -192,6 +192,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Haz aquí tu registro diario de sintomas y consulta el informe de geoposición, para cuidarte a tí y tus familiares."
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

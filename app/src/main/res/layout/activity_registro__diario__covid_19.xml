@@ -48,7 +48,7 @@
 
         android:fontFamily="@font/quicksand"
 
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
 
         android:textSize="18sp"
@@ -155,7 +155,7 @@
         android:layout_width="333dp"
         android:layout_height="90dp"
         android:text="¿Usted siente algunos de los síntomas asociados con el COVID-19 (Fiebre, dolor de cabeza, malestar general,síntomas pulmonares)?"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
