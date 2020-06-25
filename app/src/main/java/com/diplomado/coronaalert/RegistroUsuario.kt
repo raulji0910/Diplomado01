@@ -16,7 +16,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import java.lang.ref.PhantomReference
 
-class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero {
+class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone {
 
     private lateinit var txtName:EditText
     private lateinit var txtLastName:EditText
@@ -76,21 +76,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         //Spinner - Fin
         //Spinner - Inicio
         dbReferenceGenero= database.reference.child("Genero")
-        iFirebaseLoadDoneGenero = this
 
-        dbReferenceGenero.addValueEventListener(object: ValueEventListener{
-            var tipogeneroList:MutableList<Genero> = ArrayList<Genero>()
-            override fun onCancelled(p0: DatabaseError) {
-                iFirebaseLoadDoneGenero.onFirebaseLoadFailed(p0.message)
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                for(GeneroSnapShot in p0.children)
-                    tipogeneroList.add(GeneroSnapShot.getValue<Genero>(Genero::class.java)!!)
-                iFirebaseLoadDoneGenero.onFirebaseLoadSucess(tipogeneroList)
-            }
-
-        })
 
     }
 
@@ -159,9 +145,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         return result
     }
 
-    override fun onFirebaseLoadSucess(tipogeneroList: List<Genero>) {
 
-    }
 
     override fun onFirebaseLoadFailed(message: String) {
 

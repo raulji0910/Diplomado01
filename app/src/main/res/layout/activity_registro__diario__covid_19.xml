@@ -137,7 +137,7 @@
         android:layout_height="64dp"
         android:background="@drawable/bordes_redondos"
         android:backgroundTint="@color/colorPrimaryDark"
-
+        android:onClick="cargarDatos"
         android:text="REGISTRAR INFORMACIÓN"
         android:textColor="#F8F6F6"
         android:textSize="18sp"
