@@ -22,9 +22,12 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
     IFirebaseLoadDoneTipoSangre {
 
     private lateinit var txtName:EditText
+    private lateinit var txtnumeroIden:EditText
     private lateinit var txtLastName:EditText
     private lateinit var txtEmail:EditText
     private lateinit var txtPassword:EditText
+    private lateinit var txtNumPer:EditText
+    private lateinit var txtConfirmeContra:EditText
     private lateinit var progressBar: ProgressBar
     private lateinit var dbReference: DatabaseReference
 
@@ -48,10 +51,13 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_usuario)
+        txtnumeroIden=findViewById(R.id.editNumeroIdentificacion)
         txtName=findViewById(R.id.editNombres)
         txtLastName=findViewById(R.id.editApellidos)
         txtEmail=findViewById(R.id.editCorreo)
         txtPassword=findViewById(R.id.editContrasena)
+        txtNumPer=findViewById(R.id.editPersonasVive)
+        txtConfirmeContra=findViewById(R.id.editConfirmeContrasena)
         progressBar= findViewById(R.id.progressBar)
         database= FirebaseDatabase.getInstance() //Reconoce la instancia de la base de datos
         auth=FirebaseAuth.getInstance()
@@ -63,6 +69,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         mSpinner=findViewById(R.id.editTipoIdentificacion)
         mSpinner2=findViewById(R.id.editGenero)
         mSpinner3=findViewById(R.id.editTipoSangre)
+
 
 
 
@@ -130,8 +137,18 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         val lastName:String=editApellidos.text.toString()
         val email:String=editCorreo.text.toString()
         val password:String=editContrasena.text.toString()
+        val tipoIden:String=editTipoIdentificacion.selectedItem.toString()
+        val numIden:String=editNumeroIdentificacion.text.toString()
+        val generoTipo:String=editGenero.selectedItem.toString()
+        val numPer:String=editPersonasVive.text.toString()
+        val tipoSang:String=editTipoSangre.selectedItem.toString()
+        val confContra:String=editConfirmeContrasena.text.toString()
 
-        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
+
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(tipoIden) && !TextUtils.isEmpty(numIden) && !TextUtils.isEmpty(generoTipo) && !TextUtils.isEmpty(numPer) && !TextUtils.isEmpty(tipoSang) && !TextUtils.isEmpty(confContra)){
+            if(password==confContra){
+
+
             progressBar.visibility=View.VISIBLE
             auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this){
@@ -146,12 +163,24 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
                      //val userBD= user?.uid?.let { dbReference.child(it) }
 
                         userBD?.child("Name")?.setValue(name)
-                        userBD?.child("lastName")?.setValue(lastName)
+                        userBD?.child("LastName")?.setValue(lastName)
+                        userBD?.child("TipoIdentificacion")?.setValue(tipoIden)
+                        userBD?.child("NumeroIden")?.setValue(numIden)
+                        userBD?.child("GeneroTipo")?.setValue(generoTipo)
+                        userBD?.child("NumeroPersonas")?.setValue(numPer)
+                        userBD?.child("TipoSangre")?.setValue(tipoSang)
+
                         action()
 
-
                     }
+
+
+
+
                 }
+                }else{
+                Toast.makeText(this,"La contraseña ingresada es diferente a la contraseña confirmada",Toast.LENGTH_LONG).show()
+            }
 
         }
     }

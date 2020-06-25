@@ -160,8 +160,9 @@
                 android:id="@+id/editCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:inputType="textEmailAddress" />
         </LinearLayout>
 
         <LinearLayout
@@ -183,8 +184,9 @@
                 android:id="@+id/editFechaNacimiento"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:inputType="date" />
         </LinearLayout>
 
         <LinearLayout
@@ -231,8 +233,9 @@
                 android:id="@+id/editPersonasVive"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
@@ -279,8 +282,9 @@
                 android:id="@+id/editContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <LinearLayout
@@ -302,8 +306,9 @@
                 android:id="@+id/editConfirmeContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:inputType="textPassword" />
         </LinearLayout>
 
 
