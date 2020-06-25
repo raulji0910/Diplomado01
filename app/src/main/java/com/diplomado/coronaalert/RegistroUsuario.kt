@@ -1,6 +1,7 @@
 package com.diplomado.coronaalert
 
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import java.lang.ref.PhantomReference
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero,
     IFirebaseLoadDoneTipoSangre {
@@ -59,6 +62,23 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         database= FirebaseDatabase.getInstance() //Reconoce la instancia de la base de datos
         auth=FirebaseAuth.getInstance()
         dbReference=database.reference.child("User")
+
+        // Variables Calendario para pop-pup fecha
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        // Evento Click en el botón para mostrar el pop-pup de fecha
+        pickDateButton.setOnClickListener {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{view: DatePicker?, mYear: Int, mMonth: Int, mDay: Int ->
+                editFechaNacimiento.setText(""+ mDay +"/"+ mMonth +"/"+ mYear)
+            }, year, month, day)
+            //Mostrar pop-pup de fecha
+            dpd.show()
+        }
+
+
         //Spinner - Inicio
         dbReferenceTipoIden= database.reference.child("TipoIdentificacion")
         iFirebaseLoadDone = this
