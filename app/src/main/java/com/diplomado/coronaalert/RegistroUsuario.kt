@@ -140,31 +140,34 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         val password:String=editContrasena.text.toString()
         val tipoIden:String=editTipoIdentificacion.selectedItem.toString()
         val numIden:String=editNumeroIdentificacion.text.toString()
+        val fechaNam:String=editFechaNacimiento.text.toString()
         val generoTipo:String=editGenero.selectedItem.toString()
         val numPer:String=editPersonasVive.text.toString()
         val tipoSang:String=editTipoSangre.selectedItem.toString()
         val confContra:String=editConfirmeContrasena.text.toString()
+        val condiciones:Boolean=radioButtonCondiciones.isChecked()
+
 
 
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(tipoIden) && !TextUtils.isEmpty(numIden) && !TextUtils.isEmpty(generoTipo) && !TextUtils.isEmpty(numPer) && !TextUtils.isEmpty(tipoSang) && !TextUtils.isEmpty(confContra)){
             if(password==confContra){
+                if(condiciones==true) {
 
-                    progressBar.visibility=View.VISIBLE
-                    auth.createUserWithEmailAndPassword(email,password)
-                        .addOnCompleteListener(this){
-                                task ->
-                            if(task.isComplete){
-                                val user:FirebaseUser?=auth.currentUser
+                    progressBar.visibility = View.VISIBLE
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isComplete) {
+                                val user: FirebaseUser? = auth.currentUser
                                 verifyEmail(user)
                                 //val userBD= user?.uid?.let { dbReference.child(it) }
-                                val userBD= dbReference.child(user?.uid.toString())
+                                val userBD = dbReference.child(user?.uid.toString())
                                 //val userBD= user?.uid?.let { dbReference.child(it) }
 
                                 userBD?.child("Name")?.setValue(name)
-
                                 userBD?.child("LastName")?.setValue(lastName)
                                 userBD?.child("TipoIdentificacion")?.setValue(tipoIden)
                                 userBD?.child("NumeroIden")?.setValue(numIden)
+                                userBD?.child("FechaNacimiento")?.setValue(fechaNam)
                                 userBD?.child("GeneroTipo")?.setValue(generoTipo)
                                 userBD?.child("NumeroPersonas")?.setValue(numPer)
                                 userBD?.child("TipoSangre")?.setValue(tipoSang)
@@ -174,9 +177,10 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
                             }
 
 
-
-
                         }
+                }else{
+                    Toast.makeText(this,"Por favor acepte lor términos y condiciones de la aplicacición",Toast.LENGTH_LONG).show()
+                }
                 }else{
                     Toast.makeText(this,"La contraseña ingresada es diferente a la contraseña confirmada",Toast.LENGTH_LONG).show()
                 }
@@ -191,7 +195,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
                 ?.addOnCompleteListener(this){
                         task ->
                     if(task.isComplete){
-                        Toast.makeText(this,"Email enviado",Toast.LENGTH_LONG).show()
+                        Toast.makeText(this,"Registro realizado satisfactoriamente",Toast.LENGTH_LONG).show()
                     }else{
                         Toast.makeText(this,"Error al enviar el email",Toast.LENGTH_LONG).show()
                     }

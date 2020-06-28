@@ -320,7 +320,7 @@
 
 
         <RadioButton
-            android:id="@+id/radioButton1"
+            android:id="@+id/radioButtonCondiciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
