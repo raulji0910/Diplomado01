@@ -171,14 +171,20 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
+
             <TextView
                 android:id="@+id/textFechaNacimiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Fecha de nacimiento:"
+                android:text="Fecha de nacimiento:   "
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/pickDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click Aquí" />
 
             <EditText
                 android:id="@+id/editFechaNacimiento"
@@ -187,6 +193,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="30dp"
                 android:inputType="date" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -313,7 +320,7 @@
 
 
         <RadioButton
-            android:id="@+id/radioButton1"
+            android:id="@+id/radioButtonCondiciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"

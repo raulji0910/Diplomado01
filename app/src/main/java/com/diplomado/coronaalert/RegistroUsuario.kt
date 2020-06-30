@@ -1,6 +1,7 @@
 package com.diplomado.coronaalert
 
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import java.lang.ref.PhantomReference
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero,
     IFirebaseLoadDoneTipoSangre {
@@ -59,6 +62,23 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         database= FirebaseDatabase.getInstance() //Reconoce la instancia de la base de datos
         auth=FirebaseAuth.getInstance()
         dbReference=database.reference.child("User")
+
+        // Variables Calendario para pop-pup fecha
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        // Evento Click en el botón para mostrar el pop-pup de fecha
+        pickDateButton.setOnClickListener {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{view: DatePicker?, mYear: Int, mMonth: Int, mDay: Int ->
+                editFechaNacimiento.setText(""+ mDay +"/"+ mMonth +"/"+ mYear)
+            }, year, month, day)
+            //Mostrar pop-pup de fecha
+            dpd.show()
+        }
+
+
         //Spinner - Inicio
         dbReferenceTipoIden= database.reference.child("TipoIdentificacion")
         iFirebaseLoadDone = this
@@ -120,31 +140,34 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
         val password:String=editContrasena.text.toString()
         val tipoIden:String=editTipoIdentificacion.selectedItem.toString()
         val numIden:String=editNumeroIdentificacion.text.toString()
+        val fechaNam:String=editFechaNacimiento.text.toString()
         val generoTipo:String=editGenero.selectedItem.toString()
         val numPer:String=editPersonasVive.text.toString()
         val tipoSang:String=editTipoSangre.selectedItem.toString()
         val confContra:String=editConfirmeContrasena.text.toString()
+        val condiciones:Boolean=radioButtonCondiciones.isChecked()
+
 
 
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(tipoIden) && !TextUtils.isEmpty(numIden) && !TextUtils.isEmpty(generoTipo) && !TextUtils.isEmpty(numPer) && !TextUtils.isEmpty(tipoSang) && !TextUtils.isEmpty(confContra)){
             if(password==confContra){
+                if(condiciones==true) {
 
-                    progressBar.visibility=View.VISIBLE
-                    auth.createUserWithEmailAndPassword(email,password)
-                        .addOnCompleteListener(this){
-                                task ->
-                            if(task.isComplete){
-                                val user:FirebaseUser?=auth.currentUser
+                    progressBar.visibility = View.VISIBLE
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isComplete) {
+                                val user: FirebaseUser? = auth.currentUser
                                 verifyEmail(user)
                                 //val userBD= user?.uid?.let { dbReference.child(it) }
-                                val userBD= dbReference.child(user?.uid.toString())
+                                val userBD = dbReference.child(user?.uid.toString())
                                 //val userBD= user?.uid?.let { dbReference.child(it) }
 
                                 userBD?.child("Name")?.setValue(name)
-
                                 userBD?.child("LastName")?.setValue(lastName)
                                 userBD?.child("TipoIdentificacion")?.setValue(tipoIden)
                                 userBD?.child("NumeroIden")?.setValue(numIden)
+                                userBD?.child("FechaNacimiento")?.setValue(fechaNam)
                                 userBD?.child("GeneroTipo")?.setValue(generoTipo)
                                 userBD?.child("NumeroPersonas")?.setValue(numPer)
                                 userBD?.child("TipoSangre")?.setValue(tipoSang)
@@ -154,9 +177,10 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
                             }
 
 
-
-
                         }
+                }else{
+                    Toast.makeText(this,"Por favor acepte lor términos y condiciones de la aplicacición",Toast.LENGTH_LONG).show()
+                }
                 }else{
                     Toast.makeText(this,"La contraseña ingresada es diferente a la contraseña confirmada",Toast.LENGTH_LONG).show()
                 }
@@ -171,7 +195,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
                 ?.addOnCompleteListener(this){
                         task ->
                     if(task.isComplete){
-                        Toast.makeText(this,"Email enviado",Toast.LENGTH_LONG).show()
+                        Toast.makeText(this,"Registro realizado satisfactoriamente",Toast.LENGTH_LONG).show()
                     }else{
                         Toast.makeText(this,"Error al enviar el email",Toast.LENGTH_LONG).show()
                     }
