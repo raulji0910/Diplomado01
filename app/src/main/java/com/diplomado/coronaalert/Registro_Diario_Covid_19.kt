@@ -1,6 +1,7 @@
 package com.diplomado.coronaalert
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro__diario__covid_19.*
+import java.time.LocalDateTime
 import java.util.*
 
 class Registro_Diario_Covid_19 : AppCompatActivity() {
@@ -96,7 +98,7 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
 
         etPlannedDate.setOnClickListener{
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ view,mYear,mMonth,mDay ->
-        etPlannedDate.setText(""+mDay+"/"+mMonth+"/"+mYear)}, year,month,day)
+                etPlannedDate.setText(""+mYear+"-"+mMonth+"-"+mDay)}, year,month,day)
             dpd.show()
         }
 
@@ -108,8 +110,8 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
         //obtenerUbicacion()
         dbReference=database.reference.child("RegistroDiario")
         //1. Tarea implementar contador para id de registro diario
-        //Para pruebas se quema el 0
-        val registroId= dbReference.child("0")
+        //Para pruebas se quema el 0 ok
+        val registroId= dbReference.child(UUID.randomUUID().toString())
 
         //Id Usuario
         auth= FirebaseAuth.getInstance()
@@ -120,13 +122,31 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
         //2. Tarea implementar para la pregunta 2
         registroId.child("preguntaId").setValue("0")
         //3. Tarea traer el dato del Switch Pregunta 1
-        registroId.child("preguntaEstado").setValue("prueba")
+        registroId.child("preguntaEstado").setValue(if (SW1.isChecked) "SI" else "NO")
         //4. Obtener fecha de registro (traer fecha actual)
-        registroId.child("fechaRegistro").setValue("prueba")
+        registroId.child("fechaRegistro").setValue(LocalDateTime.now().toString())
         //5. Obtener fecha que selecciona el usuario
-        registroId.child("fechaCovid").setValue("prueba")
+        registroId.child("fechaCovid").setValue(etPlannedDate.text.toString())
 
 
+        //2 Pregunta
+
+        val registroId2= dbReference.child(UUID.randomUUID().toString())
+
+        //Id Usuario
+        /*auth= FirebaseAuth.getInstance()
+        user = auth.currentUser!!
+        val idUser:String= user.uid*/
+
+        registroId2.child("userId").setValue(idUser)
+        //2. Tarea implementar para la pregunta 2
+        registroId2.child("preguntaId").setValue("1")
+        //3. Tarea traer el dato del Switch Pregunta 2
+        registroId2.child("preguntaEstado").setValue(if (SW1.isChecked) "SI" else "NO")
+        //4. Obtener fecha de registro (traer fecha actual)
+        registroId2.child("fechaRegistro").setValue(LocalDateTime.now().toString())
+        //5. Obtener fecha que selecciona el usuario
+        registroId2.child("fechaCovid").setValue(etPlannedDate.text.toString())
         //Localizacion
 
         if(ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -145,39 +165,42 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
 
                 registroId.child("longitud").setValue(location.longitude.toString())
                 registroId.child("latitud").setValue(location.latitude.toString())
+
+                registroId2.child("longitud").setValue(location.longitude.toString())
+                registroId2.child("latitud").setValue(location.latitude.toString())
             }
 
 
 
 
-    }
-
-
-    /*private fun obtenerUbicacion(){
-        if(ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
-            return
         }
 
-        fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) { location ->
 
-            if(location != null){
-                lastLocation = location
-                latitude=location.latitude.toString()
-                var longitud:String=location.longitude.toString()
-
+        /*private fun obtenerUbicacion(){
+            if(ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                    LOCATION_PERMISSION_REQUEST_CODE
+                )
+                return
             }
-        }*/
+
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) { location ->
+
+                if(location != null){
+                    lastLocation = location
+                    latitude=location.latitude.toString()
+                    var longitud:String=location.longitude.toString()
+
+                }
+            }*/
+
+        val miIntent = Intent(this, MainActivity::class.java);
+        startActivity(miIntent);
     }
 
-    }
-
-
-
+}
 
 
 
