@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (usuario in dataSnapshot.children) {
-                        txtNombre.text = TextUtils.concat("Bienvenido: ",usuario.child("Name").value.toString()," ",usuario.child("lastName").value.toString())
+                        txtNombre.text = TextUtils.concat("Bienvenido: ",usuario.child("Name").value.toString()," ",usuario.child("LastName").value.toString())
 
                     }
                 }
