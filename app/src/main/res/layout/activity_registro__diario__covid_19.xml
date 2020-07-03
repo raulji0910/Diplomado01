@@ -9,68 +9,16 @@
     android:orientation="vertical"
     tools:context=".Registro_Diario_Covid_19">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039"
-        app:srcCompat="@drawable/iconop"
-        tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textCoronaAlert"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-
-        android:fontFamily="@font/quicksand"
-        android:text="CoronaAlert"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textNombre"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-
-        android:fontFamily="@font/quicksand"
-
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textViewTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:fontFamily="@font/quicksand"
-        android:text="Registro Diario"
+        android:text="@string/registro_diario"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,65 +28,64 @@
         app:layout_constraintVertical_bias="0.184" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewSubtitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ingrese su estado de salud hoy"
+        android:text="@string/ingrese_su_estado_de_salud_hoy"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.294"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.257" />
+        app:layout_constraintVertical_bias="0.258" />
 
     <TextView
-        android:id="@+id/text_seleccion_texto"
+        android:id="@+id/textViewSeleccionFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seleccione fecha de diagnóstico"
+        android:text="@string/seleccione_fecha_de_diagn_stico"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.652" />
+        app:layout_constraintVertical_bias="0.641" />
 
     <EditText
-        android:id="@+id/etPlannedDate"
-        android:layout_width="250dp
-"
+        android:id="@+id/editTextFechaCovid"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         android:focusable="false"
-        android:hint="Fecha"
+        android:hint="@string/fecha"
         android:inputType="date"
         android:maxLines="1"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.709"
+        android:autofillHints="" />
 
     <Button
-        android:id="@+id/registrar_informacion"
+        android:id="@+id/buttonRegistrarInformacion"
         android:layout_width="255dp"
         android:layout_height="64dp"
         android:background="@drawable/bordes_redondos"
         android:backgroundTint="@color/colorPrimaryDark"
         android:onClick="cargarDatos"
-        android:text="REGISTRAR INFORMACIÓN"
+        android:text="@string/registrar_informaci_n"
         android:textColor="#F8F6F6"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -146,55 +93,55 @@
         app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884"
+        app:layout_constraintVertical_bias="0.865"
         tools:ignore="MissingConstraints"
         tools:text="REGISTRAR" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewPreguntaUno"
         android:layout_width="333dp"
-        android:layout_height="90dp"
-        android:text="¿Usted siente algunos de los síntomas asociados con el COVID-19 (Fiebre, dolor de cabeza, malestar general,síntomas pulmonares)?"
+        android:layout_height="60dp"
+        android:text="@string/pregunta_uno"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347" />
+        app:layout_constraintVertical_bias="0.366" />
 
     <Switch
-        android:id="@+id/SW2"
+        android:id="@+id/switchPreguntaUno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="false"
         android:showText="false"
         android:singleLine="false"
         android:splitTrack="false"
-        android:text="NO/SI"
+        android:text="@string/no_si"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textOff="NO"
-        android:textOn="SI"
-        android:textSize="18sp"
+        android:textOff="@string/no"
+        android:textOn="@string/si"
+        android:textSize="14sp"
         android:trackTint="#76FF03"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintVertical_bias="0.453" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textViewPreguntaDos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eres positivo para COVID-19?"
+        android:text="@string/pregunta_dos"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -203,20 +150,90 @@
         app:layout_constraintVertical_bias="0.527" />
 
     <Switch
-        android:id="@+id/SW1"
+        android:id="@+id/switchPreguntaDos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NO/SI"
+        android:text="@string/no_si"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:trackTint="#76FF03"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.58" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#ffffff">
+
+
+            <ImageView
+                android:id="@+id/imageViewCoronaAlert"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.019"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/iconop"
+                tools:ignore="MissingConstraints"
+                android:contentDescription="@string/imagen_coronaalert" />
+
+            <TextView
+                android:id="@+id/textViewCoronaAlert"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/quicksand"
+                android:text="@string/coronaalert"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.545"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.166"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textViewNombre"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/quicksand"
+
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.648"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.844"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

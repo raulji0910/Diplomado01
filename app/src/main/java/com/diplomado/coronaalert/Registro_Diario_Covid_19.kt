@@ -11,11 +11,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
-
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -23,65 +20,83 @@ import kotlinx.android.synthetic.main.activity_registro__diario__covid_19.*
 import java.time.LocalDateTime
 import java.util.*
 
+//Clase registro diario covid 19
+//Realizado por: Diego Castañeda
+//               Mario Barrera
+//               Raul Jimenez
+//               Yeferson Daza
+//Año: 2020
 class Registro_Diario_Covid_19 : AppCompatActivity() {
-    //Variables globales
-    //Autenticación
+
+    //---------Se declaran la variables globales que se iniciaran posteriormente-----------------------------------
+    //---------Variables de autenticación
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
-    //Variables del layout
+
+    //---------Variables del layout
     private lateinit var txtNombre: TextView
     private lateinit var txtFecha: EditText
-    //Base de datos
+
+    //---------Variables de Base de datos
     private lateinit var dbReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
-    //Localizacion
+
+    //---------Variables de localizacion
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
 
-    //Variable de clase
+    //---------Variable de clase
     companion object{
+        //-----Variable para validar si se tiene permiso para obtener la localizacion
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 
-
+    //---------Creacion de la actividad
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro__diario__covid_19)
 
-        //Creando instancia de la base de datos
+        //-----Creando instancia de la base de datos
         database= FirebaseDatabase.getInstance()
         auth= FirebaseAuth.getInstance()
-        //LLenar variables con datos del layout
-        txtNombre=findViewById(R.id.textNombre)
-        txtFecha=findViewById(R.id.etPlannedDate)
-        //Obtener usuario logueado
-        user = auth.currentUser!!
-        //Obtener Id de Usuario
-        val id:String= user.uid
-        //Esconder texto y campo de la fecha
-        text_seleccion_texto.visibility= View.INVISIBLE
-        etPlannedDate.visibility=View.INVISIBLE
 
-        //Localización
+        //-----Llenar variables con datos del layout
+        txtNombre=findViewById(R.id.textViewNombre)
+        txtFecha=findViewById(R.id.editTextFechaCovid)
+
+        //-----Obtener usuario logueado
+        user = auth.currentUser!!
+
+        //-----Obtener Id de Usuario
+        val id:String= user.uid
+
+        //-----Ocultar texto y campo de la fecha covid
+        textViewSeleccionFecha.visibility= View.INVISIBLE
+        editTextFechaCovid.visibility=View.INVISIBLE
+
+        //-----Localización - punto de entrada principal
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
-        //Mostrar campos fecha cuando es positivo COVID
-        SW1.setOnCheckedChangeListener{compoundButton, onSwitch ->
+        //-----Mostrar campos fecha cuando es positivo COVID
+        switchPreguntaDos.setOnCheckedChangeListener{ _, onSwitch ->
             if (onSwitch){
-                text_seleccion_texto.visibility= View.VISIBLE
-                etPlannedDate.visibility=View.VISIBLE}
+                textViewSeleccionFecha.visibility= View.VISIBLE
+                editTextFechaCovid.visibility=View.VISIBLE}
             else{
-                text_seleccion_texto.visibility= View.INVISIBLE
-                etPlannedDate.visibility=View.INVISIBLE}
+                textViewSeleccionFecha.visibility= View.INVISIBLE
+                editTextFechaCovid.visibility=View.INVISIBLE}
         }
 
-        //Realizar consulta para traer nombre de usuario autenticado
+        //-----Realizar consulta para traer nombre de usuario autenticado
         val query: Query = database.reference.child("User").orderByKey().equalTo(id)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (usuario in dataSnapshot.children) {
-                        txtNombre.text = TextUtils.concat("Bienvenido: ",usuario.child("Name").value.toString()," ",usuario.child("lastName").value.toString())
+                        val primerNombre: String = usuario.child("Name").value.toString()
+                        val primerApellido: String = usuario.child("lastName").value.toString()
+
+                        txtNombre.text = TextUtils.concat("Bienvenido: ",primerNombre.replaceAfter(' ', "") ," ",primerApellido.replaceAfter(' ', ""))
 
                     }
                 }
@@ -90,64 +105,79 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        //Mostrar DatePicker
+        //-----Mostrar DatePicker para capturar fecha covid
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        etPlannedDate.setOnClickListener{
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ view,mYear,mMonth,mDay ->
-                etPlannedDate.setText(""+mYear+"-"+mMonth+"-"+mDay)}, year,month,day)
+        editTextFechaCovid.setOnClickListener{
+
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ _, mYear, mMonth, mDay ->
+                val formatoFecha: String =  TextUtils.concat("",mYear.toString(),"-",(mMonth + 1).toString(),
+                    "-$mDay"
+                ).toString()
+                editTextFechaCovid.setText(formatoFecha)}, year,month,day)
             dpd.show()
         }
 
     }
 
 
+    //------Metodo que carga los datos del layout a la base de datos
+    fun cargarDatos(view: View) {
 
-    fun cargarDatos(view: View){
-        //obtenerUbicacion()
+        //--Ubicar en tabla RegistroDiario
         dbReference=database.reference.child("RegistroDiario")
-        //1. Tarea implementar contador para id de registro diario
-        //Para pruebas se quema el 0 ok
-        val registroId= dbReference.child(UUID.randomUUID().toString())
 
-        //Id Usuario
+        //--Se obtiene id de usuario
         auth= FirebaseAuth.getInstance()
         user = auth.currentUser!!
         val idUser:String= user.uid
 
+        //-----------------------Pregunta 1---------------------------------------------------------------
+
+        //--Se obtiene id de registro
+        val registroId= dbReference.child(UUID.randomUUID().toString())
+
+        //--Se guarda id de usuario en la base de datos
         registroId.child("userId").setValue(idUser)
-        //2. Tarea implementar para la pregunta 2
+
+        //--Se guarda id de pregunta
         registroId.child("preguntaId").setValue("0")
-        //3. Tarea traer el dato del Switch Pregunta 1
-        registroId.child("preguntaEstado").setValue(if (SW1.isChecked) "SI" else "NO")
-        //4. Obtener fecha de registro (traer fecha actual)
+
+        //--Se guarda valor de switch pregunta 1
+        registroId.child("preguntaEstado").setValue(if (switchPreguntaUno.isChecked) "SI" else "NO")
+
+        //--Se guarda fecha actual
         registroId.child("fechaRegistro").setValue(LocalDateTime.now().toString())
-        //5. Obtener fecha que selecciona el usuario
-        registroId.child("fechaCovid").setValue(etPlannedDate.text.toString())
+
+        //--Se guarda fecha covid
+        registroId.child("fechaCovid").setValue(editTextFechaCovid.text.toString())
 
 
-        //2 Pregunta
+        //-----------------------Pregunta 2---------------------------------------------------------------
 
+        //--Se obtiene id de registro
         val registroId2= dbReference.child(UUID.randomUUID().toString())
 
-        //Id Usuario
-        /*auth= FirebaseAuth.getInstance()
-        user = auth.currentUser!!
-        val idUser:String= user.uid*/
-
+        //--Se guarda id de usuario en la base de datos
         registroId2.child("userId").setValue(idUser)
-        //2. Tarea implementar para la pregunta 2
+
+        //--Se guarda valor de switch pregunta 2
         registroId2.child("preguntaId").setValue("1")
-        //3. Tarea traer el dato del Switch Pregunta 2
-        registroId2.child("preguntaEstado").setValue(if (SW1.isChecked) "SI" else "NO")
-        //4. Obtener fecha de registro (traer fecha actual)
+
+        //--Se guarda valor de switch pregunta 2
+        registroId2.child("preguntaEstado").setValue(if (switchPreguntaDos.isChecked) "SI" else "NO")
+
+        //--Se guarda fecha actual
         registroId2.child("fechaRegistro").setValue(LocalDateTime.now().toString())
-        //5. Obtener fecha que selecciona el usuario
-        registroId2.child("fechaCovid").setValue(etPlannedDate.text.toString())
-        //Localizacion
+
+        //--Se guarda fecha covid
+        registroId2.child("fechaCovid").setValue(editTextFechaCovid.text.toString())
+
+
+        //--Validar permiso de Localizacion
 
         if(ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED){
@@ -158,6 +188,7 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
             return
         }
 
+        //--Obtener localizacion latitud y longitud
         fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) { location ->
 
             if(location != null){
@@ -170,34 +201,11 @@ class Registro_Diario_Covid_19 : AppCompatActivity() {
                 registroId2.child("latitud").setValue(location.latitude.toString())
             }
 
-
-
-
         }
 
-
-        /*private fun obtenerUbicacion(){
-            if(ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                    LOCATION_PERMISSION_REQUEST_CODE
-                )
-                return
-            }
-
-            fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) { location ->
-
-                if(location != null){
-                    lastLocation = location
-                    latitude=location.latitude.toString()
-                    var longitud:String=location.longitude.toString()
-
-                }
-            }*/
-
-        val miIntent = Intent(this, MainActivity::class.java);
-        startActivity(miIntent);
+       //--Volver al menu despues de realizar registro diario
+        val miIntent = Intent(this, MainActivity::class.java)
+        startActivity(miIntent)
     }
 
 }

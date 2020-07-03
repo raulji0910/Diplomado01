@@ -12,4 +12,16 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="registro_diario">Registro Diario</string>
+    <string name="ingrese_su_estado_de_salud_hoy">Ingrese su estado de salud hoy:</string>
+    <string name="seleccione_fecha_de_diagn_stico">Seleccione fecha de diagnóstico</string>
+    <string name="fecha">Fecha</string>
+    <string name="registrar_informaci_n">REGISTRAR INFORMACIÓN</string>
+    <string name="pregunta_uno">¿Usted siente algunos de los síntomas asociados con el COVID-19 (Fiebre, dolor de cabeza, malestar general,síntomas pulmonares)?</string>
+    <string name="pregunta_dos">Eres positivo para COVID-19?</string>
+    <string name="no_si">NO/SI</string>
+    <string name="no">NO</string>
+    <string name="si">SI</string>
+    <string name="coronaalert">CoronaAlert</string>
+    <string name="imagen_coronaalert">Imagen CoronaAlert</string>
 </resources>
