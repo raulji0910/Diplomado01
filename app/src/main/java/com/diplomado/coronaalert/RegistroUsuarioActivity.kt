@@ -187,7 +187,7 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                                 //------Grabar datos
                                 val userBD = dbReference.child(user?.uid.toString())
                                 userBD?.child("Name")?.setValue(name)
-                                userBD?.child("LastName")?.setValue(lastName)
+                                userBD?.child("lastName")?.setValue(lastName)
                                 userBD?.child("TipoIdentificacion")?.setValue(tipoIden)
                                 userBD?.child("NumeroIden")?.setValue(numIden)
                                 userBD?.child("FechaNacimiento")?.setValue(fechaNam)
