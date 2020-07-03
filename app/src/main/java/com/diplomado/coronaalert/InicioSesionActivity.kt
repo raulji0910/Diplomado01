@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_inicio_sesion.*
 //               Raul Jimenez
 //               Yeferson Daza
 //Año: 2020
-class Inicio_sesion : AppCompatActivity() {
+class InicioSesionActivity : AppCompatActivity() {
 
     //---------Se declaran la variables globales que se iniciaran posteriormente-----------------------------------
     //---------Variables de autenticación
@@ -50,7 +50,7 @@ class Inicio_sesion : AppCompatActivity() {
 
     //--Metodo registrar
     fun register(view:View){
-        startActivity(Intent(this,RegistroUsuario::class.java))
+        startActivity(Intent(this,RegistroUsuarioActivity::class.java))
     }
 
     //--Metodo Ingresar

@@ -30,7 +30,7 @@ class RecuperarContrasenaActivity : AppCompatActivity() {
                     task ->
 
                         if (task.isSuccessful){
-                            startActivity(Intent(this,Inicio_sesion::class.java))
+                            startActivity(Intent(this,InicioSesionActivity::class.java))
                         }else{
 
                             Toast.makeText(this,"Error al enviar correo", Toast.LENGTH_LONG).show()
@@ -40,7 +40,7 @@ class RecuperarContrasenaActivity : AppCompatActivity() {
     }
     fun cancelar(view:View){
 
-        startActivity(Intent(this,Inicio_sesion::class.java))
+        startActivity(Intent(this,InicioSesionActivity::class.java))
 
     }
 }

@@ -12,7 +12,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-//Clase registro diario covid 19
+//Clase menu principal
 //Realizado por: Diego Castañeda
 //               Mario Barrera
 //               Raul Jimenez
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
     //------Metodo que carga layout Registro Diario Covid 19
     fun onClickRegistro_Diario(view: View){
-        val miIntent = Intent(this, Registro_Diario_Covid_19::class.java)
+        val miIntent = Intent(this, RegistroDiarioCovid19Activity::class.java)
         startActivity(miIntent)
     }
 
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
         imageViewCerrar.setOnClickListener{
             auth.signOut()
-            val miIntent = Intent(this, Inicio_sesion::class.java)
+            val miIntent = Intent(this, InicioSesionActivity::class.java)
             miIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             miIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(miIntent)

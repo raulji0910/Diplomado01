@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:keyboardNavigationCluster="true"
     android:orientation="vertical"
-    tools:context=".Registro_Diario_Covid_19">
+    tools:context=".RegistroDiarioCovid19Activity">
 
 
     <TextView

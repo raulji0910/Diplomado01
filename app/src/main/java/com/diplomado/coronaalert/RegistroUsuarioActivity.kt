@@ -18,11 +18,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
-import java.lang.ref.PhantomReference
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero,
+class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero,
     IFirebaseLoadDoneTipoSangre {
 
     private lateinit var txtName:EditText
@@ -188,7 +187,7 @@ class RegistroUsuario : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDon
             }
         }
         private fun action(){
-            startActivity(Intent(this,Inicio_sesion::class.java))
+            startActivity(Intent(this,InicioSesionActivity::class.java))
         }
         private fun verifyEmail(user:FirebaseUser?){
             user?.sendEmailVerification()

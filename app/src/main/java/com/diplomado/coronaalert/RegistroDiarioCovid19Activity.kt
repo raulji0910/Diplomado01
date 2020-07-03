@@ -26,7 +26,7 @@ import java.util.*
 //               Raul Jimenez
 //               Yeferson Daza
 //Año: 2020
-class Registro_Diario_Covid_19 : AppCompatActivity() {
+class RegistroDiarioCovid19Activity : AppCompatActivity() {
 
     //---------Se declaran la variables globales que se iniciaran posteriormente-----------------------------------
     //---------Variables de autenticación

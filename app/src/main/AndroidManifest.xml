@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegistroUsuario"
+        <activity android:name=".RegistroUsuarioActivity"
             android:screenOrientation="portrait">
 
 
@@ -48,7 +48,7 @@
 
         </activity>
 
-        <activity android:name=".Inicio_sesion"
+        <activity android:name=".InicioSesionActivity"
             android:label="CoronaAlert"
             android:theme="@style/AppTheme1"
             android:roundIcon="@drawable/iconop"
@@ -65,7 +65,7 @@
 
         </activity>
 
-        <activity android:name=".Registro_Diario_Covid_19"
+        <activity android:name=".RegistroDiarioCovid19Activity"
             android:theme="@style/AppTheme1"
             android:screenOrientation="portrait">
 
