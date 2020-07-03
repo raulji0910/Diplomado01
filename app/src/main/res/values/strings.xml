@@ -31,4 +31,14 @@
     <string name="olvidaste_la_contrase_a">¿Olvidaste la contraseña?</string>
     <string name="correo">Correo</string>
     <string name="contrase_a">Contraseña</string>
+    <string name="men_principal">Menú Principal</string>
+    <string name="registro_diario_t_boton">Registro Diario</string>
+    <string name="informe_geoposici_n_b_ig">Informe Geoposición</string>
+    <string name="noticias_t_bN">Noticias</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="mensaje_principal">Haz aquí tu registro diario de sintomas y consulta el informe de geoposición, para cuidarte a tí y tus familiares.</string>
+    <string name="boton_cerrar">Boton Cerrar</string>
+    <string name="boton_noticias">Boton Noticias</string>
+    <string name="boton_geoposicion">Boton Geoposicion</string>
+    <string name="boton_registro_diario">Boton Registro Diario</string>
 </resources>

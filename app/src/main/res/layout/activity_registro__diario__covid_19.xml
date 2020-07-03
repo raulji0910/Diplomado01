@@ -173,7 +173,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28">
+        app:layout_constraintVertical_bias="0.00">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -185,14 +185,14 @@
                 android:id="@+id/imageViewCoronaAlert"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
+                android:contentDescription="@string/imagen_coronaalert"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.019"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/iconop"
-                tools:ignore="MissingConstraints"
-                android:contentDescription="@string/imagen_coronaalert" />
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textViewCoronaAlert"

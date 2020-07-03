@@ -12,31 +12,52 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
+//Clase registro diario covid 19
+//Realizado por: Diego Castañeda
+//               Mario Barrera
+//               Raul Jimenez
+//               Yeferson Daza
+//Año: 2020
 class MainActivity : AppCompatActivity() {
 
+    //---------Se declaran la variables globales que se iniciaran posteriormente-----------------------------------
+    //---------Variables de autenticación
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
-    private lateinit var txtNombre: TextView
-    private lateinit var txtApellido: TextView
-    private lateinit var dbReference: DatabaseReference
+
+    //---------Variables de Base de datos
     private lateinit var database: FirebaseDatabase
 
+    //---------Variables del layout
+    private lateinit var txtNombre: TextView
+
+    //---------Creacion de la actividad
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        database= FirebaseDatabase.getInstance()
-        txtNombre=findViewById(R.id.textNombre)
 
+        //-----Creando instancia de la base de datos
+        database= FirebaseDatabase.getInstance()
         auth=FirebaseAuth.getInstance()
+
+        //-----Llenar variables con datos del layout
+        txtNombre=findViewById(R.id.textViewNombreMA)
+
+        //-----Obtener usuario logueado
         user = auth.currentUser!!
         val id:String= user.uid
 
+
+        //-----Realizar consulta para traer nombre de usuario autenticado
         val query: Query = database.reference.child("User").orderByKey().equalTo(id)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (usuario in dataSnapshot.children) {
-                        txtNombre.text = TextUtils.concat("Bienvenido: ",usuario.child("Name").value.toString()," ",usuario.child("lastName").value.toString())
+                        val primerNombre: String = usuario.child("Name").value.toString()
+                        val primerApellido: String = usuario.child("lastName").value.toString()
+
+                        txtNombre.text = TextUtils.concat("Bienvenido: ",primerNombre.replaceAfter(' ', "") ," ",primerApellido.replaceAfter(' ', ""))
 
                     }
                 }
@@ -44,30 +65,37 @@ class MainActivity : AppCompatActivity() {
 
             override fun onCancelled(databaseError: DatabaseError) {}
         })
-
     }
 
+    //------Metodo que carga layout Informe Geolocalización
     fun onClickInforme(view: View){
-        val miIntent = Intent(this, InformeGeolocalizacionActivity::class.java);
-        startActivity(miIntent);
-
+        val miIntent = Intent(this, InformeGeolocalizacionActivity::class.java)
+        startActivity(miIntent)
     }
 
+    //------Metodo que carga layout Registro Diario Covid 19
     fun onClickRegistro_Diario(view: View){
-        val miIntent = Intent(this, Registro_Diario_Covid_19::class.java);
-        startActivity(miIntent);
+        val miIntent = Intent(this, Registro_Diario_Covid_19::class.java)
+        startActivity(miIntent)
     }
 
+    //------Metodo que carga layout Noticias
     fun onClickRNoticias(view: View){
-        val miIntent = Intent(this, Registro_Diario_Covid_19::class.java);
-        startActivity(miIntent);
+        val miIntent = Intent(this, MainActivity::class.java)
+        startActivity(miIntent)
     }
 
+    //------Metodo que cierra sesión
     fun onClickCerrar(view: View){
-        FirebaseAuth.getInstance().signOut();
-        super.onDestroy();
-        val miIntent = Intent(this, Inicio_sesion::class.java);
-        startActivity(miIntent);
+
+        imageViewCerrar.setOnClickListener{
+            auth.signOut()
+            val miIntent = Intent(this, Inicio_sesion::class.java)
+            miIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            miIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(miIntent)
+            finish()
+        }
     }
 
 
