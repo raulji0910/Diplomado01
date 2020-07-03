@@ -3,54 +3,75 @@ package com.diplomado.coronaalert
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_inicio_sesion.*
 
+//Clase Inicio sesión
+//Realizado por: Diego Castañeda
+//               Mario Barrera
+//               Raul Jimenez
+//               Yeferson Daza
+//Año: 2020
 class Inicio_sesion : AppCompatActivity() {
+
+    //---------Se declaran la variables globales que se iniciaran posteriormente-----------------------------------
+    //---------Variables de autenticación
+    private lateinit var auth: FirebaseAuth
+
+    //---------Variables del layout
     private lateinit var txtUser: EditText
     private lateinit var txtPassword: EditText
     private lateinit var progressBar: ProgressBar
-    private lateinit var auth: FirebaseAuth
 
-
+    //---------Creacion de la actividad
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_sesion)
-        txtUser=findViewById(R.id.editEmail)
-        txtPassword=findViewById(R.id.editPassword)
 
-        progressBar= findViewById(R.id.progressBar2)
+        //-----Llenar variables con datos del layout
+        txtUser=findViewById(R.id.editTextEmail)
+        txtPassword=findViewById(R.id.editTextPassword)
+        progressBar= findViewById(R.id.progressBarInicioSesion)
+
+        //-----Creando instancia de la base de datos
         auth=FirebaseAuth.getInstance()
-
-        //getSupportActionBar()?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-        //getSupportActionBar()?.setCustomView(R.layout.abs_layout)
 
     }
 
+    //--Metodo recuperar contraseña
     fun forgotPassword(view: View){
         startActivity(Intent(this,RecuperarContrasenaActivity::class.java))
     }
+
+    //--Metodo registrar
     fun register(view:View){
         startActivity(Intent(this,RegistroUsuario::class.java))
     }
+
+    //--Metodo Ingresar
     fun login(view:View){
         loginUser()
-
     }
+
+    //--Metodo para autenticar usuario
     private fun loginUser(){
 
-        val user:String= editEmail.text.toString().trim()
-        val password:String= editPassword.text.toString().trim()
+        //--Se capturan variables del layout
+        val user:String= editTextEmail.text.toString().trim()
+        val password:String= editTextPassword.text.toString().trim()
+
+        //--Se valida que los campos no esten vacios
         if(!TextUtils.isEmpty(user) && !TextUtils.isEmpty(password)){
+
+            //--Se carga barra de progreso
             progressBar.visibility=View.VISIBLE
-            Log.e("usuario",user.toString())
+
+            //--Se realiza autenticación contra firebase
             auth.signInWithEmailAndPassword(user.trim(),password)
                 .addOnCompleteListener(this){
                         task ->
@@ -64,6 +85,8 @@ class Inicio_sesion : AppCompatActivity() {
                 }
         }
     }
+
+    //--Metodo para ingresar al menú principal si la autenticación es correcta
     private fun action(){
         startActivity(Intent(this,MainActivity::class.java))
     }

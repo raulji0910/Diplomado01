@@ -7,13 +7,13 @@
     tools:context=".Inicio_sesion">
 
     <Button
-        android:id="@+id/ingresar"
+        android:id="@+id/buttonIngresar"
         android:layout_width="255dp"
         android:layout_height="64dp"
         android:background="@drawable/bordes_redondos"
         android:backgroundTint="@color/colorPrimaryDark"
         android:onClick="login"
-        android:text="INGRESAR"
+        android:text="@string/ingresar"
         android:textColor="#F8F6F6"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,13 +27,13 @@
 
 
     <Button
-        android:id="@+id/registrar"
+        android:id="@+id/buttonRegistrar"
         android:layout_width="255dp"
         android:layout_height="64dp"
         android:background="@drawable/bordes_redondos_rojo"
         android:backgroundTint="#F44336"
         android:onClick="register"
-        android:text="REGISTRARME"
+        android:text="@string/registrarme"
         android:textColor="#FAF8F8"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,10 +43,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.859"
         tools:ignore="MissingConstraints"
-        tools:text="@string/Btn2_Inicio_Sesion" />
+         />
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/progressBarInicioSesion"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:visibility="gone"
@@ -61,7 +61,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewCoronaAlertIS"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,24 +71,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.073"
         app:srcCompat="@drawable/iconop"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/logocoronaalert" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textViewTituloIS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-
-
         android:fontFamily="@font/quicksand"
-        android:text="Inicio de Sesión"
-
+        android:text="@string/inicio_de_sesi_n"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,12 +105,11 @@
 
 
     <TextView
-        android:id="@+id/textOlvidoPass"
+        android:id="@+id/textViewOlvidoPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:onClick="forgotPassword"
-        android:text="¿Olvidaste la contraseña?"
+        android:text="@string/olvidaste_la_contrase_a"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,17 +118,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55"
         tools:ignore="MissingConstraints"
-        tools:text="¿Olvidaste la contraseña?" />
+         />
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/editTextEmail"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Correo"
+        android:hint="@string/correo"
         android:inputType="textEmailAddress"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
@@ -142,18 +135,17 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.377"
+        android:autofillHints="@string/correo" />
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="256dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/contrase_a"
         android:inputType="textPassword"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,7 +153,8 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintVertical_bias="0.482"
+        android:autofillHints="@string/contrase_a" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,4 +24,11 @@
     <string name="si">SI</string>
     <string name="coronaalert">CoronaAlert</string>
     <string name="imagen_coronaalert">Imagen CoronaAlert</string>
+    <string name="ingresar">INGRESAR</string>
+    <string name="registrarme">REGISTRARME</string>
+    <string name="logocoronaalert">LogoCoronaAlert</string>
+    <string name="inicio_de_sesi_n">Inicio de Sesión</string>
+    <string name="olvidaste_la_contrase_a">¿Olvidaste la contraseña?</string>
+    <string name="correo">Correo</string>
+    <string name="contrase_a">Contraseña</string>
 </resources>
