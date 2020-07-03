@@ -18,12 +18,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-    tools:context=".RegistroUsuarioActivity">>
+    tools:context=".RegistroUsuarioActivity">
 
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageViewCoronaAlertIS"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/iconop"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/logocoronaalert" />
 
         <TextView
             android:id="@+id/tituloRegistrese"
@@ -31,9 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/quicksand"
-            android:text="Regístrese aquí"
+            android:text="@string/reg_strese_aqu"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:text="Regístrese aquí" />
 
@@ -56,9 +66,10 @@
                 android:id="@+id/textTipoIdentificacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Tipo de Identificación:"
+                android:layout_marginStart="30dp"
+                android:text="@string/tipo_de_identificaci_n"
                 android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
 
@@ -66,8 +77,9 @@
                 android:id="@+id/editTipoIdentificacion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000" />
 
         </LinearLayout>
 
@@ -81,18 +93,23 @@
                 android:id="@+id/numeroIdentificacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Numero de identificación:"
+                android:layout_marginStart="30dp"
+                android:text="@string/numero_de_identificaci_n"
                 android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editNumeroIdentificacion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:inputType="number" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,8 +122,9 @@
                 android:id="@+id/textNombres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Nombres:"
+                android:layout_marginStart="30dp"
+                android:text="@string/nombres_ru"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
 
@@ -114,8 +132,13 @@
                 android:id="@+id/editNombres"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:textColor="#000000"
+                android:autofillHints=""
+                android:inputType="text"
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,8 +151,9 @@
                 android:id="@+id/textApelidos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Apellidos:"
+                android:layout_marginStart="30dp"
+                android:text="@string/apellidos_ru"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
 
@@ -137,8 +161,13 @@
                 android:id="@+id/editApellidos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:textColor="#000000"
+                android:autofillHints=""
+                android:inputType="text"
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,8 +180,9 @@
                 android:id="@+id/textCorreoElectronico"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Correo Electrónico:"
+                android:layout_marginStart="30dp"
+                android:text="@string/correo_electr_nico"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
 
@@ -160,9 +190,13 @@
                 android:id="@+id/editCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:inputType="textEmailAddress" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -176,23 +210,24 @@
                 android:id="@+id/textFechaNacimiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Fecha de nacimiento:   "
+                android:layout_marginStart="30dp"
+                android:text="@string/fecha_de_nacimiento"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pickDateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Click Aquí" />
 
             <EditText
                 android:id="@+id/editFechaNacimiento"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:inputType="date" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:clickable="true"
+                android:focusable="false"
+                android:inputType="date"
+                android:textColor="#000000"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
 
         </LinearLayout>
 
@@ -206,17 +241,20 @@
                 android:id="@+id/textGenero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Género:"
+                android:layout_marginStart="30dp"
+                android:text="@string/g_nero_ru"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                 android:id="@+id/editGenero"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="1" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:backgroundTint="#000000"
+                android:textColor="#000000" />
 
 
         </LinearLayout>
@@ -231,8 +269,9 @@
                 android:id="@+id/textPersonasVive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="# Personas con que vive:"
+                android:layout_marginStart="30dp"
+                android:text="@string/personas_con_que_vive"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
 
@@ -240,9 +279,13 @@
                 android:id="@+id/editPersonasVive"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:inputType="number" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -255,17 +298,21 @@
                 android:id="@+id/textTipoSangre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Tipo de sangre:"
+                android:layout_marginStart="30dp"
+                android:text="@string/tipo_de_sangre"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                 android:id="@+id/editTipoSangre"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="1" />
+
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:backgroundTint="#000000"
+                android:textColor="#000000" />
 
 
         </LinearLayout>
@@ -280,8 +327,9 @@
                 android:id="@+id/textContrasena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Ingrese su contraseña:"
+                android:layout_marginStart="30dp"
+                android:text="@string/ingrese_su_contrase_a"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
 
@@ -289,9 +337,11 @@
                 android:id="@+id/editContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:inputType="textPassword" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:inputType="textPassword"
+                android:textColor="#000000" />
         </LinearLayout>
 
         <LinearLayout
@@ -304,8 +354,9 @@
                 android:id="@+id/textConfirmarContrasena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Confirme su contraseña:"
+                android:layout_marginStart="30dp"
+                android:text="@string/confirme_su_contrase_a"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
 
@@ -313,9 +364,13 @@
                 android:id="@+id/editConfirmeContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="30dp"
-                android:inputType="textPassword" />
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="#000000"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
 
@@ -323,10 +378,11 @@
             android:id="@+id/radioButtonCondiciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:text="Acepto los términos y políticia de privacidad"
+            android:buttonTint="#000000"
+            android:text="@string/acepto_los_t_rminos_y_pol_ticia_de_privacidad"
             android:textAlignment="viewStart"
             android:textColor="#F85F6A"
             app:layout_constraintBottom_toTopOf="@+id/button2"
@@ -341,12 +397,12 @@
             android:id="@+id/button2"
             android:layout_width="255dp"
             android:layout_height="64dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginStart="80dp"
             android:layout_marginBottom="20dp"
             android:background="#80AAFF"
             android:backgroundTint="#80AAFF"
             android:onClick="register"
-            android:text="Registrarse"
+            android:text="@string/registrarse"
             android:textAlignment="center"
             android:textColor="@color/common_google_signin_btn_text_dark_pressed"
             app:layout_constraintBottom_toBottomOf="parent"

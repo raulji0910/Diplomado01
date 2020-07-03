@@ -41,4 +41,24 @@
     <string name="boton_noticias">Boton Noticias</string>
     <string name="boton_geoposicion">Boton Geoposicion</string>
     <string name="boton_registro_diario">Boton Registro Diario</string>
+    <string name="enviar_boton">ENVIAR</string>
+    <string name="cancelar_boton">CANCELAR</string>
+    <string name="logo_RC">Logo</string>
+    <string name="olvidaste_tu_contrase_a">¿Olvidaste tu contraseña?</string>
+    <string name="correo_recuperar_cont">Correo</string>
+    <string name="ingresa_correo_de_recuperaci_n">Ingresa correo de recuperación:</string>
+    <string name="reg_strese_aqu">Regístrese aquí</string>
+    <string name="tipo_de_identificaci_n">Tipo de Identificación:</string>
+    <string name="numero_de_identificaci_n">Numero de identificación:</string>
+    <string name="nombres_ru">Nombres:</string>
+    <string name="apellidos_ru">Apellidos:</string>
+    <string name="correo_electr_nico">Correo Electrónico:</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento:</string>
+    <string name="g_nero_ru">Género:</string>
+    <string name="personas_con_que_vive"># Personas con que vive:</string>
+    <string name="tipo_de_sangre">Tipo de sangre:</string>
+    <string name="ingrese_su_contrase_a">Ingrese su contraseña:</string>
+    <string name="confirme_su_contrase_a">Confirme su contraseña:</string>
+    <string name="acepto_los_t_rminos_y_pol_ticia_de_privacidad">Acepto los términos y políticia de privacidad</string>
+    <string name="registrarse">Registrarse</string>
 </resources>

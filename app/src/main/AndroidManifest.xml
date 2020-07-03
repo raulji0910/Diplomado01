@@ -16,10 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".RegistroUsuarioActivity"
-            android:screenOrientation="portrait">
-
-
-
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1">
         </activity>
 
 
@@ -35,6 +33,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
         <activity
             android:name=".InformeGeolocalizacionActivity"
             android:icon="@drawable/icon_corona"
@@ -45,7 +44,6 @@
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme1"
             android:screenOrientation="portrait">
-
         </activity>
 
         <activity android:name=".InicioSesionActivity"
@@ -53,22 +51,22 @@
             android:theme="@style/AppTheme1"
             android:roundIcon="@drawable/iconop"
             android:icon="@drawable/iconop"
-            android:screenOrientation="portrait"
-
-            >
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <activity android:name=".RegistroDiarioCovid19Activity"
             android:theme="@style/AppTheme1"
             android:screenOrientation="portrait">
+        </activity>
 
+        <activity android:name=".RecuperarContrasenaActivity"
+            android:theme="@style/AppTheme1"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

@@ -17,13 +17,30 @@ import com.diplomado.coronaalert.model.TipoSangre
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_registro__diario__covid_19.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import java.util.*
 import kotlin.collections.ArrayList
 
+//Clase registro usuario
+//Realizado por: Diego Castañeda
+//               Mario Barrera
+//               Raul Jimenez
+//               Yeferson Daza
+//Año: 2020
 class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebaseLoadDoneGenero,
     IFirebaseLoadDoneTipoSangre {
 
+    //---------Se declaran la variables globales que se iniciaran posteriormente-----------------------------------
+    //---------Variables de autenticación
+    private lateinit var database:FirebaseDatabase
+    private lateinit var auth:FirebaseAuth
+    private lateinit var dbReference: DatabaseReference
+    private lateinit var dbReferenceTipoIden: DatabaseReference
+    private lateinit var dbReferenceGenero: DatabaseReference
+    private lateinit var dbReferenceTipoSangre: DatabaseReference
+
+    //---------Variables del layout
     private lateinit var txtName:EditText
     private lateinit var txtnumeroIden:EditText
     private lateinit var txtLastName:EditText
@@ -32,24 +49,32 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
     private lateinit var txtNumPer:EditText
     private lateinit var txtConfirmeContra:EditText
     private lateinit var progressBar: ProgressBar
-    private lateinit var dbReference: DatabaseReference
 
-    private lateinit var dbReferenceTipoIden: DatabaseReference
-    private lateinit var dbReferenceGenero: DatabaseReference
-    private lateinit var dbReferenceTipoSangre: DatabaseReference
-    private lateinit var database:FirebaseDatabase
-    private lateinit var auth:FirebaseAuth
-    //Spinner - Inicio
+    //---------Variables Spinner
     private lateinit var mSpinner: Spinner
     private lateinit var mSpinner2: Spinner
     private lateinit var mSpinner3: Spinner
+
+    //---------Variables Interfaces
     private lateinit var iFirebaseLoadDone: IFirebaseLoadDone
     private lateinit var iFirebaseLoadDoneGenero: IFirebaseLoadDoneGenero
     private lateinit var iFirebaseLoadDoneTipoSangre: IFirebaseLoadDoneTipoSangre
-    //Spinner - Fin
+
+    //---------Creacion de la actividad
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_usuario)
+
+        //-----Creando instancia de la base de datos
+        database= FirebaseDatabase.getInstance()
+        auth=FirebaseAuth.getInstance()
+        dbReferenceTipoIden= database.reference.child("TipoIdentificacion")
+        dbReference=database.reference.child("User")
+
+        //-----Creando instancia interfaz
+        iFirebaseLoadDone = this
+
+        //-----Llenar variables con datos del layout
         txtnumeroIden=findViewById(R.id.editNumeroIdentificacion)
         txtName=findViewById(R.id.editNombres)
         txtLastName=findViewById(R.id.editApellidos)
@@ -58,37 +83,27 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
         txtNumPer=findViewById(R.id.editPersonasVive)
         txtConfirmeContra=findViewById(R.id.editConfirmeContrasena)
         progressBar= findViewById(R.id.progressBar)
-        database= FirebaseDatabase.getInstance() //Reconoce la instancia de la base de datos
-        auth=FirebaseAuth.getInstance()
-        dbReference=database.reference.child("User")
+        mSpinner=findViewById(R.id.editTipoIdentificacion)
+        mSpinner2=findViewById(R.id.editGenero)
+        mSpinner3=findViewById(R.id.editTipoSangre)
 
-        // Variables Calendario para pop-pup fecha
+        //-----Mostrar DatePicker para capturar fecha covid
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        // Evento Click en el botón para mostrar el pop-pup de fecha
-        pickDateButton.setOnClickListener {
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{view: DatePicker?, mYear: Int, mMonth: Int, mDay: Int ->
-                editFechaNacimiento.setText(""+ mDay +"/"+ mMonth +"/"+ mYear)
-            }, year, month, day)
-            //Mostrar pop-pup de fecha
+        editFechaNacimiento.setOnClickListener{
+
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ _, mYear, mMonth, mDay ->
+                val formatoFecha: String =  TextUtils.concat("",mYear.toString(),"-",(mMonth + 1).toString(),
+                    "-$mDay"
+                ).toString()
+                editFechaNacimiento.setText(formatoFecha)}, year,month,day)
             dpd.show()
         }
 
-
-        //Spinner - Inicio
-        dbReferenceTipoIden= database.reference.child("TipoIdentificacion")
-        iFirebaseLoadDone = this
-        mSpinner=findViewById(R.id.editTipoIdentificacion)
-        mSpinner2=findViewById(R.id.editGenero)
-        mSpinner3=findViewById(R.id.editTipoSangre)
-
-
-
-
-        //Spinner - Inicio
+        //-----Spinner Tipo Identificación
         dbReferenceTipoIden.addValueEventListener(object : ValueEventListener{
             var tipoIdenList:MutableList<TipoIdentificacion> = ArrayList<TipoIdentificacion>()
             override fun onCancelled(p0: DatabaseError) {
@@ -100,8 +115,8 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                 iFirebaseLoadDone.onFirebaseLoadSucess(tipoIdenList)
             }
         })
-        //Spinner - Fin
-        //Spinner - Inicio
+
+        //-----Spinner Genero
         dbReferenceGenero= database.reference.child("Genero")
         iFirebaseLoadDoneGenero = this
         dbReferenceGenero.addValueEventListener(object: ValueEventListener{
@@ -115,6 +130,8 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                 iFirebaseLoadDoneGenero.onFirebaseLoadSucessGenero(tipogeneroList)
             }
         })
+
+        //-----Spinner Tipo Sangre
         dbReferenceTipoSangre= database.reference.child("TipoSangre")
         iFirebaseLoadDoneTipoSangre = this
         dbReferenceTipoSangre.addValueEventListener(object: ValueEventListener{
@@ -129,9 +146,13 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
             }
         })
     }
+
+    //------Metodo registrar
     fun register(view: View) {
         createNewAccount()
     }
+
+    //------Metodo para insertar datos en la base de datos
     private fun createNewAccount(){
         val name:String=editNombres.text.toString()
         val lastName:String=editApellidos.text.toString()
@@ -147,21 +168,24 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
         val condiciones:Boolean=radioButtonCondiciones.isChecked()
 
 
-
+        //------Validar que los campos no esten vacios
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(tipoIden) && !TextUtils.isEmpty(numIden) && !TextUtils.isEmpty(generoTipo) && !TextUtils.isEmpty(numPer) && !TextUtils.isEmpty(tipoSang) && !TextUtils.isEmpty(confContra)){
             if(password==confContra){
                 if(condiciones==true) {
 
                     progressBar.visibility = View.VISIBLE
+
+                    //------Crear usuario con mail y pass
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this) { task ->
                             if (task.isComplete) {
                                 val user: FirebaseUser? = auth.currentUser
-                                verifyEmail(user)
-                                //val userBD= user?.uid?.let { dbReference.child(it) }
-                                val userBD = dbReference.child(user?.uid.toString())
-                                //val userBD= user?.uid?.let { dbReference.child(it) }
 
+                                //------Enviar verificación mail
+                                verifyEmail(user)
+
+                                //------Grabar datos
+                                val userBD = dbReference.child(user?.uid.toString())
                                 userBD?.child("Name")?.setValue(name)
                                 userBD?.child("LastName")?.setValue(lastName)
                                 userBD?.child("TipoIdentificacion")?.setValue(tipoIden)
@@ -172,10 +196,7 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                                 userBD?.child("TipoSangre")?.setValue(tipoSang)
 
                                 action()
-
                             }
-
-
                         }
                 }else{
                     Toast.makeText(this,"Por favor acepte lor términos y condiciones de la aplicacición",Toast.LENGTH_LONG).show()
@@ -183,12 +204,15 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                 }else{
                     Toast.makeText(this,"La contraseña ingresada es diferente a la contraseña confirmada",Toast.LENGTH_LONG).show()
                 }
-
             }
         }
+
+        //------Metodo para volver al inicio
         private fun action(){
             startActivity(Intent(this,InicioSesionActivity::class.java))
         }
+
+        //------Metodo para verificar mail
         private fun verifyEmail(user:FirebaseUser?){
             user?.sendEmailVerification()
                 ?.addOnCompleteListener(this){
@@ -200,7 +224,8 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                     }
                 }
         }
-        //Spinner - Inicio
+
+        //-------Spinner Tipo identificación
         override fun onFirebaseLoadSucess(tipoIdentificacionList: List<TipoIdentificacion>) {
             val tipo_iden_descripcion = getTipoIdentificacionDescripcionList(tipoIdentificacionList)
             val adapter = ArrayAdapter<String>(this,R.layout.my_text_view,tipo_iden_descripcion)
@@ -214,9 +239,11 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
         }
         override fun onFirebaseLoadFailed(message: String) {
         }
+
+        //-------Spinner Genero
         override fun onFirebaseLoadSucessGenero(tipogeneroList: List<Genero>) {
             val tipo_genero_descripcion = getGeneroList(tipogeneroList)
-            val adapterGenero = ArrayAdapter<String>(this ,android.R.layout.simple_list_item_1,tipo_genero_descripcion)
+            val adapterGenero = ArrayAdapter<String>(this ,R.layout.my_text_view,tipo_genero_descripcion)
             mSpinner2.adapter = adapterGenero
         }
         private fun getGeneroList(tipogeneroList: List<Genero>): List<String> {
@@ -226,11 +253,13 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
             return result2
         }
         override fun onFirebaseLoadFailedGenero(message: String) {
-            TODO("Not yet implemented")
+
         }
+
+        //-------Spinner Tipo Sangre
         override fun onFirebaseLoadSucessTipoSangre(tipoSangreList: List<TipoSangre>) {
             val tipo_sangre_descripcion = getTipoSangreList(tipoSangreList)
-            val adapterTipoSangre = ArrayAdapter<String>(this ,android.R.layout.simple_list_item_1,tipo_sangre_descripcion)
+            val adapterTipoSangre = ArrayAdapter<String>(this ,R.layout.my_text_view,tipo_sangre_descripcion)
             mSpinner3.adapter = adapterTipoSangre
         }
         private fun getTipoSangreList(tipoSangreList: List<TipoSangre>): List<String> {
@@ -240,7 +269,7 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
             return result3
         }
         override fun onFirebaseLoadFailedTipoSangre(message: String) {
-            TODO("Not yet implemented")
+
         }
-        //Spinner - Fin
+
     }

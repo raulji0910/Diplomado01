@@ -7,13 +7,13 @@
     tools:context=".RecuperarContrasenaActivity">
 
     <Button
-        android:id="@+id/recuperar"
+        android:id="@+id/buttonRecuperar"
         android:layout_width="255dp"
         android:layout_height="64dp"
         android:background="@drawable/bordes_redondos"
         android:backgroundTint="@color/colorPrimaryDark"
         android:onClick="enviar"
-        android:text="ENVIAR"
+        android:text="@string/enviar_boton"
         android:textColor="#F8F6F6"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,16 +23,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.712"
         tools:ignore="MissingConstraints"
-        tools:text="ENVIAR" />
+        />
 
     <Button
-        android:id="@+id/cancelar"
+        android:id="@+id/buttonCancelar"
         android:layout_width="255dp"
         android:layout_height="64dp"
         android:background="@drawable/bordes_redondos_rojo"
         android:backgroundTint="#F44336"
         android:onClick="cancelar"
-        android:text="CANCELAR"
+        android:text="@string/cancelar_boton"
         android:textColor="#FAF8F8"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.859"
         tools:ignore="MissingConstraints"
-        tools:text="CANCELAR" />
+         />
 
     <ImageView
         android:id="@+id/imageView"
@@ -55,31 +55,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.073"
         app:srcCompat="@drawable/iconop"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/logo_RC" />
 
     <TextView
         android:id="@+id/textViewRecuperarContrasena"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-
-
         android:fontFamily="@font/quicksand"
-        android:text="¿Olvidaste tu contraseña?"
-
+        android:text="@string/olvidaste_tu_contrase_a"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.231"
         tools:ignore="MissingConstraints"
-        tools:text="¿Se te olvidó tu contraseña?" />
+        />
 
     <EditText
         android:id="@+id/editEmailRecuperar"
@@ -87,10 +83,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
-        android:hint="Correo"
+        android:hint="@string/correo_recuperar_cont"
         android:inputType="textEmailAddress"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:text="Ingresa correo de recuperación:"
+        android:text="@string/ingresa_correo_de_recuperaci_n"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
