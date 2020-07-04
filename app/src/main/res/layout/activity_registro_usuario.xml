@@ -395,16 +395,19 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="255dp"
-            android:layout_height="64dp"
             android:layout_marginStart="80dp"
             android:layout_marginBottom="20dp"
-            android:background="#80AAFF"
-            android:backgroundTint="#80AAFF"
+
+            android:layout_width="255dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bordes_redondos"
+            android:backgroundTint="@color/colorPrimaryDark"
+
             android:onClick="register"
             android:text="@string/registrarse"
             android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+            android:textColor="#F8F6F6"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -412,6 +415,5 @@
             app:layout_constraintVertical_bias="1.0" />
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 
 
