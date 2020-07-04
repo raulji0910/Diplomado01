@@ -204,7 +204,9 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                 }else{
                     Toast.makeText(this,"La contraseña ingresada es diferente a la contraseña confirmada",Toast.LENGTH_LONG).show()
                 }
-            }
+            }else{
+            Toast.makeText(this,"Los datos ingresados no estan completos, por favor verifique",Toast.LENGTH_LONG).show()
+        }
         }
 
         //------Metodo para volver al inicio
