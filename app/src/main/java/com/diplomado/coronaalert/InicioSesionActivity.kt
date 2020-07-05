@@ -83,6 +83,8 @@ class InicioSesionActivity : AppCompatActivity() {
                         Toast.makeText(this,"Error en el usuario y/o contraseña",Toast.LENGTH_LONG).show()
                     }
                 }
+        }else{
+            Toast.makeText(this,"Introduzca los datos completos por favor",Toast.LENGTH_LONG).show()
         }
     }
 
