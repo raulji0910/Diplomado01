@@ -9,7 +9,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="police_stations_url">https://data.gov.au/dataset/police-station-locations/resource/76110b24-0f0a-4c29-9583-3f99eaba486c</string>
+    <string name="police_stations">Prueba Datos</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="registro_diario">Registro Diario</string>
@@ -61,4 +62,10 @@
     <string name="confirme_su_contrase_a">Confirme su contraseña:</string>
     <string name="acepto_los_t_rminos_y_pol_ticia_de_privacidad">Acepto los términos y políticia de privacidad</string>
     <string name="registrarse">Registrarse</string>
+    <string name="texto_geoposicion">Desplácese por el mapa de Bogotá y observe las zonas donde se encuentra la población afectada con Covid-19.</string>
+    <string name="informe_geoposici_n">Informe GeoPosición</string>
+    <string name="activar_mapa_de_calor">Activar mapa de calor</string>
+    <string name="tama_o">Tamaño</string>
+    <string name="color_geo">Color</string>
+    <string name="opacidad">Opacidad</string>
 </resources>

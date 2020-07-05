@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/quicksand"
         android:layout_marginTop="15dp"
-        android:text="Informe GeoPosición"
+        android:fontFamily="@font/quicksand"
+        android:text="@string/informe_geoposici_n"
         android:textAlignment="center"
-
-        android:textSize="30dp"
-        android:textStyle="bold"
-        />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView"
@@ -27,12 +29,57 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
-        android:text="Desplácese por el mapa  de Bogotá y observe las zonas donde se encuentra la población afectada con Covid-19."
-        android:textAlignment="textStart"
+        android:text="@string/texto_geoposicion"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold" />
-    />
 
-    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:onClick="startDemo"
+        android:text="@string/activar_mapa_de_calor"
+        android:textColor="#FFFFFF" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textAlignment="center">
+
+        <Button
+            android:id="@+id/buttonRadio"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:onClick="changeRadius"
+            android:text="@string/tama_o"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/buttonGradiente"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:onClick="changeGradient"
+            android:text="@string/color_geo"
+            android:textColor="#ffffff"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/buttonOpacidad"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:onClick="changeOpacity"
+            android:text="@string/opacidad"
+            tools:ignore="ButtonStyle" />
+
+
+    </LinearLayout>
+    <androidx.fragment.app.FragmentContainerView xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"

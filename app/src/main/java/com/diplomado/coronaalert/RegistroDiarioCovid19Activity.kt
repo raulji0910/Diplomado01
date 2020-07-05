@@ -118,6 +118,9 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
                     "-$mDay"
                 ).toString()
                 editTextFechaCovid.setText(formatoFecha)}, year,month,day)
+            dpd.datePicker.maxDate = System.currentTimeMillis() + 1000
+            c.add(Calendar.MONTH,-6)
+            dpd.datePicker.minDate = c.timeInMillis
             dpd.show()
         }
 
@@ -194,11 +197,11 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
             if(location != null){
                 lastLocation = location
 
-                registroId.child("longitud").setValue(location.longitude.toString())
-                registroId.child("latitud").setValue(location.latitude.toString())
+                registroId.child("longitud").setValue(location.longitude)
+                registroId.child("latitud").setValue(location.latitude)
 
-                registroId2.child("longitud").setValue(location.longitude.toString())
-                registroId2.child("latitud").setValue(location.latitude.toString())
+                registroId2.child("longitud").setValue(location.longitude)
+                registroId2.child("latitud").setValue(location.latitude)
             }
 
         }

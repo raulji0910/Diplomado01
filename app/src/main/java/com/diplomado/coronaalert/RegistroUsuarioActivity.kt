@@ -100,6 +100,10 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                     "-$mDay"
                 ).toString()
                 editFechaNacimiento.setText(formatoFecha)}, year,month,day)
+
+            dpd.datePicker.maxDate =  System.currentTimeMillis() + 1000
+            c.add(Calendar.YEAR,-100)
+            dpd.datePicker.minDate = c.timeInMillis
             dpd.show()
         }
 
