@@ -205,18 +205,20 @@ class InformeGeolocalizacionActivity : AppCompatActivity(), OnMapReadyCallback, 
         val lng1: Double = -74.029453
 
         list.add(LatLng(lat1, lng1))
-        val query: Query = database.reference.child("RegistroDiario")
+        val query: Query = database.reference.child("RegistroDiario").orderByChild("preguntaId").equalTo("1")
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (registroDiario in dataSnapshot.children) {
-
+                        val estado: String = registroDiario.child("preguntaEstado").value.toString()
+                        if (estado == "SI"){
                         val lat: Double = registroDiario.child("latitud").value as Double
                         val lng: Double = registroDiario.child("longitud").value as Double
                         Log.v("latitud",lat.toString())
                         Log.v("longitud",lng.toString())
-                        list.add(LatLng(lat, lng))
+                        list.add(LatLng(lat, lng))}
+
 
                     }
                 }
