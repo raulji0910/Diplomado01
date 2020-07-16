@@ -27,61 +27,47 @@
 
     <ImageView
         android:id="@+id/imageViewRegistroDiario"
-        android:layout_width="136dp"
-        android:layout_height="134dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/boton_registro_diario"
         android:onClick="onClickRegistro_Diario"
         android:tint="#00e676"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMensajePrincipal"
-        app:layout_constraintVertical_bias="0.047"
-        app:srcCompat="@drawable/ic_registro_diario"
-        android:contentDescription="@string/boton_registro_diario" />
+        app:layout_constraintVertical_bias="0.046"
+        app:srcCompat="@drawable/ic_registro_diario" />
 
     <ImageView
         android:id="@+id/imageViewInformeGeo"
-        android:layout_width="136dp"
-        android:layout_height="134dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/boton_geoposicion"
         android:onClick="onClickInforme"
         android:tint="#f57f17"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.814"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMensajePrincipal"
-        app:layout_constraintVertical_bias="0.047"
-        app:srcCompat="@drawable/ic_geoposicion"
-        android:contentDescription="@string/boton_geoposicion" />
-
-    <ImageView
-        android:id="@+id/imageViewNoticias"
-        android:layout_width="136dp"
-        android:layout_height="134dp"
-        android:tint="#e040fb"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloBTRD"
-        app:layout_constraintVertical_bias="0.078"
-        app:srcCompat="@drawable/ic_noticias"
-        android:contentDescription="@string/boton_noticias" />
+        app:layout_constraintVertical_bias="0.391"
+        app:srcCompat="@drawable/ic_geoposicion" />
 
     <ImageView
         android:id="@+id/imageViewCerrar"
-        android:layout_width="136dp"
-        android:layout_height="134dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/boton_cerrar"
         android:onClick="onClickCerrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.814"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTituloBIG"
-        app:layout_constraintVertical_bias="0.078"
-        app:srcCompat="@drawable/ic_baseline_power_settings_new_24"
-        android:contentDescription="@string/boton_cerrar" />
+        app:layout_constraintVertical_bias="0.113"
+        app:srcCompat="@drawable/ic_baseline_power_settings_new_24" />
 
     <TextView
         android:id="@+id/textViewTituloBTRD"
@@ -89,13 +75,12 @@
         android:layout_height="wrap_content"
         android:text="@string/registro_diario_t_boton"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.204"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewRegistroDiario"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <TextView
         android:id="@+id/textViewTituloBIG"
@@ -103,27 +88,13 @@
         android:layout_height="wrap_content"
         android:text="@string/informe_geoposici_n_b_ig"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewInformeGeo"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textViewTituloBN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/noticias_t_bN"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewNoticias"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <TextView
         android:id="@+id/textViewTituloBC"
@@ -131,13 +102,12 @@
         android:layout_height="wrap_content"
         android:text="@string/cerrar_sesi_n"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCerrar"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintVertical_bias="0.144" />
 
     <TextView
         android:id="@+id/textViewMensajePrincipal"

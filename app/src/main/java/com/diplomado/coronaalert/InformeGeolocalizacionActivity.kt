@@ -42,13 +42,14 @@ class InformeGeolocalizacionActivity : AppCompatActivity(), OnMapReadyCallback, 
 
     //---------Variables de Base de datos
     private lateinit var dbReference: DatabaseReference
+    private lateinit var dbReferenceUsuario: DatabaseReference
     private lateinit var database: FirebaseDatabase
 
     //---------Variables de clase
     companion object{
 
         //-----Variable para validar si se tiene permiso para obtener la localizacion
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 
     //-------HeatMap
@@ -159,6 +160,8 @@ class InformeGeolocalizacionActivity : AppCompatActivity(), OnMapReadyCallback, 
                 val currentLatLong = LatLng(location.latitude,location.longitude)
                 placeMarket(currentLatLong)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 15f))
+            }else{
+                Toast.makeText(this,"Por favor intenta de nuevo para cargar ubicación",Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -176,7 +179,7 @@ class InformeGeolocalizacionActivity : AppCompatActivity(), OnMapReadyCallback, 
              )
 
          } catch (e: Exception) {
-             Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show()
+             Toast.makeText(this, "No es posible cargar datos de mapa de calor", Toast.LENGTH_LONG).show()
          }
 
          // Check if need to instantiate (avoid setData etc twice)
@@ -201,8 +204,8 @@ class InformeGeolocalizacionActivity : AppCompatActivity(), OnMapReadyCallback, 
     private fun readItemsDataBase(): ArrayList<LatLng> {
         //-----Realizar consulta para traer nombre de usuario autenticado
         val list = ArrayList<LatLng>()
-        val lat1: Double = 4.7692757
-        val lng1: Double = -74.029453
+        val lat1: Double = 4.7692888
+        val lng1: Double = -74.0295104
 
         list.add(LatLng(lat1, lng1))
         val query: Query = database.reference.child("RegistroDiario").orderByChild("preguntaId").equalTo("1")
@@ -213,13 +216,32 @@ class InformeGeolocalizacionActivity : AppCompatActivity(), OnMapReadyCallback, 
                     for (registroDiario in dataSnapshot.children) {
                         val estado: String = registroDiario.child("preguntaEstado").value.toString()
                         if (estado == "SI"){
-                        val lat: Double = registroDiario.child("latitud").value as Double
-                        val lng: Double = registroDiario.child("longitud").value as Double
-                        Log.v("latitud",lat.toString())
-                        Log.v("longitud",lng.toString())
-                        list.add(LatLng(lat, lng))}
+
+                            //--Ubicar en tabla User
+                            val queryUsuario: Query = database.reference.child("User").orderByKey().equalTo(registroDiario.child("userId").value.toString())
+
+                            queryUsuario.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    if (dataSnapshot.exists()) {
+                                        for (usuario in dataSnapshot.children) {
+
+                                            val estadoCovid = usuario.child("estado").value.toString()
+                                            if (estadoCovid == "1"){
 
 
+                                                val lat: Double = registroDiario.child("latitud").value as Double
+                                                val lng: Double = registroDiario.child("longitud").value as Double
+
+                                                list.add(LatLng(lat, lng))}
+
+
+                                        }
+                                    }
+                                }
+
+                                override fun onCancelled(databaseError: DatabaseError) {}
+                            })
+                           }
                     }
                 }
             }

@@ -90,6 +90,8 @@ class InicioSesionActivity : AppCompatActivity() {
 
     //--Metodo para ingresar al menú principal si la autenticación es correcta
     private fun action(){
-        startActivity(Intent(this,MainActivity::class.java))
+        val miIntent = Intent(this, MainActivity::class.java)
+        miIntent.putExtra("mensaje","Inicio de sesión satisfactorio")
+        startActivity(miIntent)
     }
 }

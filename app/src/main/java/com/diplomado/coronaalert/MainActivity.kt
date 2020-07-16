@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val men : String = intent.getStringExtra("mensaje")
+        if(men != null){
+            Toast.makeText(this,men, Toast.LENGTH_LONG).show()
+        }
         //-----Creando instancia de la base de datos
         database= FirebaseDatabase.getInstance()
         auth=FirebaseAuth.getInstance()

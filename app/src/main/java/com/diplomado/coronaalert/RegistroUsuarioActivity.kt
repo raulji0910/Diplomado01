@@ -198,6 +198,7 @@ class RegistroUsuarioActivity : AppCompatActivity(), IFirebaseLoadDone, IFirebas
                                 userBD?.child("GeneroTipo")?.setValue(generoTipo)
                                 userBD?.child("NumeroPersonas")?.setValue(numPer)
                                 userBD?.child("TipoSangre")?.setValue(tipoSang)
+                                userBD?.child("estado")?.setValue(0)
 
                                 action()
                             }

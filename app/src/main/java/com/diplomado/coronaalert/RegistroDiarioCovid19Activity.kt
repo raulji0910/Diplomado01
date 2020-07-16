@@ -1,18 +1,23 @@
 package com.diplomado.coronaalert
 
+import android.Manifest
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -33,13 +38,18 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
 
+
     //---------Variables del layout
     private lateinit var txtNombre: TextView
     private lateinit var txtFecha: EditText
 
     //---------Variables de Base de datos
     private lateinit var dbReference: DatabaseReference
+    private lateinit var dbReferenceUsuario: DatabaseReference
     private lateinit var database: FirebaseDatabase
+    private var latiLong: LatLng? = null
+    private var lati: Double? = null
+    private var longi: Double? = null
 
     //---------Variables de localizacion
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -49,12 +59,15 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
     companion object{
         //-----Variable para validar si se tiene permiso para obtener la localizacion
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+        private const val REQUEST_CHECK_SETTINGS = 0x1
+        private var REGISTRO_DIARIO = 0
     }
 
     //---------Creacion de la actividad
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro__diario__covid_19)
+
 
         //-----Creando instancia de la base de datos
         database= FirebaseDatabase.getInstance()
@@ -77,6 +90,9 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
         //-----Localización - punto de entrada principal
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
+
+
+        obtenerLocalizacion()
         //-----Mostrar campos fecha cuando es positivo COVID
         switchPreguntaDos.setOnCheckedChangeListener{ _, onSwitch ->
             if (onSwitch){
@@ -97,6 +113,29 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
                         val primerApellido: String = usuario.child("lastName").value.toString()
 
                         txtNombre.text = TextUtils.concat("Bienvenido: ",primerNombre.replaceAfter(' ', "") ," ",primerApellido.replaceAfter(' ', ""))
+
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
+
+        //-----Realizar consulta para validar registro diario
+        val query2: Query = database.reference.child("RegistroDiario").orderByChild("userId").equalTo(id)
+        query2.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (registro in dataSnapshot.children) {
+                        val fechaRegistro: String = registro.child("fechaRegistro").value.toString()
+                        val fechaHoy: String = LocalDateTime.now().toString()
+                        val fechaRegistroTratada: String = fechaRegistro.replaceAfter('T', "")
+                        val fechaHoyTratada: String = fechaHoy.replaceAfter('T', "")
+
+                            if (fechaRegistroTratada == fechaHoyTratada){
+
+                                REGISTRO_DIARIO = 1
+                            }
 
                     }
                 }
@@ -126,9 +165,142 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
 
     }
 
+    fun obtenerLocalizacion(){//: LatLng? {
 
+        //var latilong : LatLng = LatLng(0.1200, 0.1200)
+
+        val locationRequest: LocationRequest
+        val locationCallback: LocationCallback
+
+        locationRequest = LocationRequest.create()
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY;
+        locationRequest.interval = 20 * 1000;
+
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                if (locationResult == null) {
+                    return
+                }
+                for (location in locationResult.locations) {
+                    if (location != null) {
+                        var wayLatitude = location.latitude
+                        var wayLongitude = location.longitude
+
+
+                    }
+                }
+            }
+        }
+        val builder = LocationSettingsRequest.Builder()
+
+        // ...
+
+
+        val client: SettingsClient = LocationServices.getSettingsClient(this)
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+
+        task.addOnSuccessListener { locationSettingsResponse ->
+            // All location settings are satisfied. The client can initialize
+            // location requests here.
+            // ...
+        }
+
+        task.addOnFailureListener { exception ->
+            if (exception is ResolvableApiException){
+                // Location settings are not satisfied, but this can be fixed
+                // by showing the user a dialog.
+                try {
+                    // Show the dialog by calling startResolutionForResult(),
+                    // and check the result in onActivityResult().
+                    exception.startResolutionForResult(this,
+                        REQUEST_CHECK_SETTINGS)
+                } catch (sendEx: IntentSender.SendIntentException) {
+                    // Ignore the error.
+                }
+            }
+        }
+
+
+
+        if(ActivityCompat.checkSelfPermission(this , Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED){
+            fusedLocationProviderClient.locationAvailability.addOnSuccessListener(this) { locationAvailability ->
+
+                    if (locationAvailability.isLocationAvailable) {
+                        if (ActivityCompat.checkSelfPermission(this,
+                                Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+                            fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ location ->
+                                 lastLocation = location.result!!
+                                lati = lastLocation.latitude
+                                longi = lastLocation.longitude
+
+                            }
+
+                        }else{
+
+                            if(ActivityCompat.checkSelfPermission(this , Manifest.permission.ACCESS_FINE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED){
+                                ActivityCompat.requestPermissions(this,
+                                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                                    LOCATION_PERMISSION_REQUEST_CODE
+                                )
+                                return@addOnSuccessListener
+                            }
+                        }
+
+                    }else{
+                        fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback,null)
+                    }
+
+                }
+
+
+        }else{
+            if(ActivityCompat.checkSelfPermission(this , Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    LOCATION_PERMISSION_REQUEST_CODE
+                )
+                return
+            }
+        }
+
+    }
+
+
+
+    fun validarCampos():Boolean{
+        obtenerLocalizacion()
+        return lati !=null  || longi != null
+    }
+
+    fun ejecutarRegistro(view: View){
+        if (REGISTRO_DIARIO == 0){
+        if (validarCampos()){
+            cargarDatos()
+        }else{
+            val miIntent = Intent(this, MainActivity::class.java)
+            miIntent.putExtra("mensaje","La ubicación no se logró obtener por favor intentar nuevamente")
+            startActivity(miIntent)
+
+        }
+        }else{
+           val miIntent = Intent(this, MainActivity::class.java)
+           miIntent.putExtra("mensaje","Ya registraste hoy, vuelve a intentar mañana.")
+            startActivity(miIntent)
+        }
+    }
     //------Metodo que carga los datos del layout a la base de datos
-    fun cargarDatos(view: View) {
+    fun cargarDatos() {
+
+
+        var lat1: Double = 0.1200
+        var lng1: Double = 0.1200
+        //--Validar permiso de Localizacion
+
+
 
         //--Ubicar en tabla RegistroDiario
         dbReference=database.reference.child("RegistroDiario")
@@ -173,6 +345,19 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
         //--Se guarda valor de switch pregunta 2
         registroId2.child("preguntaEstado").setValue(if (switchPreguntaDos.isChecked) "SI" else "NO")
 
+        if (switchPreguntaDos.isChecked){
+
+            //--Ubicar en tabla User
+            dbReferenceUsuario = database.reference.child("User")
+            val usuarioEstado= dbReferenceUsuario.child(idUser)
+            usuarioEstado.child("estado").setValue(1)
+        }else{
+            //--Ubicar en tabla User
+            dbReferenceUsuario = database.reference.child("User")
+            val usuarioEstado= dbReferenceUsuario.child(idUser)
+            usuarioEstado.child("estado").setValue(0)
+        }
+
         //--Se guarda fecha actual
         registroId2.child("fechaRegistro").setValue(LocalDateTime.now().toString())
 
@@ -180,35 +365,21 @@ class RegistroDiarioCovid19Activity : AppCompatActivity() {
         registroId2.child("fechaCovid").setValue(editTextFechaCovid.text.toString())
 
 
-        //--Validar permiso de Localizacion
+            //--Obtener localizacion latitud y longitud
 
-        if(ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
-            return
-        }
+        obtenerLocalizacion()
 
-        //--Obtener localizacion latitud y longitud
-        fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) { location ->
+                    registroId.child("longitud").setValue(longi)
+                    registroId.child("latitud").setValue(lati)
 
-            if(location != null){
-                lastLocation = location
-
-                registroId.child("longitud").setValue(location.longitude)
-                registroId.child("latitud").setValue(location.latitude)
-
-                registroId2.child("longitud").setValue(location.longitude)
-                registroId2.child("latitud").setValue(location.latitude)
-            }
-
-        }
+                    registroId2.child("longitud").setValue(longi)
+                    registroId2.child("latitud").setValue(lati)
 
        //--Volver al menu despues de realizar registro diario
         val miIntent = Intent(this, MainActivity::class.java)
+        miIntent.putExtra("mensaje","Registro satisfactorio")
         startActivity(miIntent)
+
     }
 
 }
